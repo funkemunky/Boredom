@@ -1,0 +1,6 @@
+name: Combo
+main: cc.funkemunky.ComboMode.Core
+version: 1.0
+author: funkemunky
+commands:
+  togglecombo:
