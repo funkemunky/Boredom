@@ -1,5 +1,5 @@
 name: Tab
 main: cc.funkemunky.Meme.Tab
 version: Meme
-depend: [Construct, Fiona]
+depend: [Fiona]
 author: funkemunky
