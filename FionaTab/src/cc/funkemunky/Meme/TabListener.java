@@ -35,7 +35,7 @@ implements TablistEntrySupplier {
 		table.put(0, 3, Color.Gray + "Flight: " + Color.White + player.getAllowFlight());
 		table.put(0, 4, Color.Gray + "Op: " + Color.White + player.isOp());
 		table.put(1, 0, Color.Gold + Color.Bold + "Fiona Test Server");
-		table.put(1, 3, Color.Yellow + Color.Bold + "Your Violations");
+		table.put(1, 3, Color.Gold + "Your Violations");
 		int i = 4;
 		User user = Fiona.getUserManager().getUser(player.getUniqueId());
 		if (user.getVLs().size() > 0) {
