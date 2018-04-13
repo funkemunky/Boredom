@@ -5,5 +5,6 @@
 	<classpathentry kind="lib" path="/Users/kachow/Desktop/proguard5.3.3/Fiona.jar"/>
 	<classpathentry kind="lib" path="/Users/kachow/Desktop/NerdStuff/Server Versions/spigot-1.7.10-SNAPSHOT-b1649.jar"/>
 	<classpathentry kind="lib" path="/Users/kachow/Documents/GitHub/Boredom/FionaTab/dependencies/Tablist-0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/Users/kachow/Desktop/NerdStuff/plugins for later/worldguard-6.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

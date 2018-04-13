@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="FionaTab:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/FionaTab_jar</output-path>
+    <root id="archive" name="FionaTab.jar">
+      <element id="module-output" name="FionaTab" />
+    </root>
+  </artifact>
+</component>

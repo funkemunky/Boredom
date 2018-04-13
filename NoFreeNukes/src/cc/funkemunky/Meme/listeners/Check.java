@@ -2,6 +2,9 @@ package cc.funkemunky.Meme.listeners;
 
 import java.util.List;
 
+import cc.funkemunky.Meme.Core;
+import cc.funkemunky.Meme.api.events.FreecamGlitchEvent;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -44,9 +47,15 @@ public class Check implements Listener {
 	        }
 	      }
 	      if ((!isValid) && 
-	        (!player.getPlayer().getItemInHand().getType().equals(Material.ENDER_PEARL))) {
-	        e.setCancelled(true);
-	      }
+	        (!player.getPlayer().getItemInHand().getType().equals(Material.ENDER_PEARL))
+				  && Core.getCore().getConfig().getBoolean("enabled")) {
+			  FreecamGlitchEvent event = new FreecamGlitchEvent(player, e.getClickedBlock());
+			  Bukkit.getPluginManager().callEvent(event);
+			  if(!event.isCancelled()) {
+				  e.setCancelled(true);
+			  }
+
+		  }
 	}
 
 

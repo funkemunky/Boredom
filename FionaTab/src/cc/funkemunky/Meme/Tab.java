@@ -1,6 +1,9 @@
 package cc.funkemunky.Meme;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import cc.funkemunky.Meme.listeners.AllListeners;
 
 public class Tab extends JavaPlugin{
 
@@ -8,12 +11,14 @@ public class Tab extends JavaPlugin{
 
 	public void onEnable() {
 		instance = this;
-		
-		new me.vertises.aztec.tablist.TablistManager(this, new TabListener(this), 100L);
+
+		Bukkit.getPluginManager().registerEvents(new AllListeners(), this);
+
+		saveDefaultConfig();
 	}
+
 	
 	public static Tab getInstance() {
 		return instance;
 	}
-
 }
