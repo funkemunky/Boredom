@@ -1,5 +1,5 @@
 name: FionaCore
 main: cc.funkemunky.Meme.Tab
 version: 1.1
-depend: [Fiona, PermissionsEx]
+depend: [Vault]
 author: funkemunky

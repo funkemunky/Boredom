@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
   <component name="EclipseModuleManager">
-    <libelement value="jar://$USER_HOME$/Desktop/proguard5.3.3/Fiona.jar!/" />
-    <libelement value="jar://$USER_HOME$/Desktop/NerdStuff/Server Versions/spigot-1.7.10-SNAPSHOT-b1649.jar!/" />
-    <libelement value="jar://$MODULE_DIR$/dependencies/Tablist-0.1-SNAPSHOT.jar!/" />
-    <libelement value="jar://$USER_HOME$/Desktop/NerdStuff/plugins for later/worldguard-6.2.jar!/" />
+    <libelement value="file:///Users/kachow/Desktop/proguard5.3.3/Fiona.jar" />
+    <libelement value="file:///Users/kachow/Desktop/NerdStuff/Server Versions/spigot-1.7.10-SNAPSHOT-b1649.jar" />
+    <libelement value="file:///Users/kachow/Documents/GitHub/Boredom/FionaTab/dependencies/Tablist-0.1-SNAPSHOT.jar" />
+    <libelement value="file:///Users/kachow/Desktop/NerdStuff/plugins for later/worldguard-6.2.jar" />
     <src_description expected_position="1">
       <src_folder value="file://$MODULE_DIR$/src" expected_position="1" />
     </src_description>
@@ -21,7 +21,25 @@
     <orderEntry type="module-library">
       <library name="Fiona.jar">
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/proguard5.3.3/Fiona.jar!/" />
+          <root url="file:///Users/kachow/Desktop/proguard5.3.3/Fiona.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="spigot-1.7.10-SNAPSHOT-b1649.jar">
+        <CLASSES>
+          <root url="file:///Users/kachow/Desktop/NerdStuff/Server Versions/spigot-1.7.10-SNAPSHOT-b1649.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Tablist-0.1-SNAPSHOT.jar">
+        <CLASSES>
+          <root url="file:///Users/kachow/Documents/GitHub/Boredom/FionaTab/dependencies/Tablist-0.1-SNAPSHOT.jar" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -30,41 +48,14 @@
     <orderEntry type="module-library">
       <library name="worldguard-6.2.jar">
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/NerdStuff/plugins for later/worldguard-6.2.jar!/" />
+          <root url="file:///Users/kachow/Desktop/NerdStuff/plugins for later/worldguard-6.2.jar" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="spigot-1.8.8-R0.1-SNAPSHOT-latest" level="project" />
+    <orderEntry type="library" name="Vault-1.6.6" level="project" />
     <orderEntry type="library" name="Lombok-1.6.6" level="project" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/NerdStuff/plugins for later/citizens-2.0.13-SNAPSHOT.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/dependencies/spigot-1.8.8-R0.1-SNAPSHOT.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$MODULE_DIR$/dependencies/spigot-1.8.8-R0.1-SNAPSHOT.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/NerdStuff/plugins for later/PermissionsEx-1.23.3.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
   </component>
 </module>

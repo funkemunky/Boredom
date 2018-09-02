@@ -1,0 +1,8 @@
+name: ChunkLoader
+main: cc.funkemunky.load.ChunkLoader
+author: funkemunky
+version: b1
+commands:
+  chunkloader:
+    descrption: Give a chunkloader to someone.
+    aliases: [cl, givechunkloader, givecl, gcl]

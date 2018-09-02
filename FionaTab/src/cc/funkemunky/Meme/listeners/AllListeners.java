@@ -25,15 +25,31 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import cc.funkemunky.Meme.Tab;
 
-import ru.tehkode.permissions.PermissionUser;
-import ru.tehkode.permissions.bukkit.PermissionsEx;
-
 public class AllListeners implements Listener {
 
 	private Map<Entity, Location> entities;
 
 	public AllListeners() {
 		entities = new HashMap<>();
+
+		new BukkitRunnable() {
+			public void run() {
+				int i = 0;
+				for(int x = 107 ; x < 135 ; x++) {
+					for(int y = 107 ; y < 200 ; y++) {
+						for(int z = 355 ; z < 287 ; z++) {
+							Location location = new Location(Bukkit.getWorld("world"), x, y, z);
+
+							if(location.getBlock().getType().equals(Material.BRICK)) {
+								location.getBlock().setType(Material.AIR);
+								i++;
+							}
+						}
+					}
+				}
+				Bukkit.broadcastMessage(Color.translate("&8[&c!&8] &7Cleared " + i + " bricks from the build zone!"));
+			}
+		}.runTaskTimer(Tab.instance, 0L, 3000L);
 	}
 	
 	@EventHandler
@@ -47,7 +63,7 @@ public class AllListeners implements Listener {
 				public void run() {
 					block.setType(Material.AIR);
 				}
-			}.runTaskLater(Tab.getInstance(), 120L);
+			}.runTaskLater(Tab.instance, 120L);
 		}
 	}
 
@@ -83,18 +99,14 @@ public class AllListeners implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoin(PlayerJoinEvent e) {
 		Player player = e.getPlayer();
+		String group = Tab.instance.getPermission().getPrimaryGroup(player);
 
-		PermissionUser user = PermissionsEx.getUser(player);
+		String color = group.equalsIgnoreCase("Owner") ? Color.Dark_Red + Color.Italics : group.equalsIgnoreCase("Developer") || group.equalsIgnoreCase("Admin") ? Color.Red + Color.Italics : group.equalsIgnoreCase("Test") ? Color.Gold : "";
 
-		if(user.getPrefix(player.getWorld().getName()).contains("Owner")) {
-			player.setPlayerListName(Color.Dark_Red + Color.Italics + player.getName());
-		} else if(user.getPrefix(player.getWorld().getName()).contains("Developer")
-				|| user.getPrefix(player.getWorld().getName()).contains("Admin")) {
-			player.setPlayerListName(Color.Red + Color.Italics + player.getName());
-		} else if(user.getPrefix(player.getWorld().getName()).contains("Test")) {
-			player.setPlayerListName(Color.Gold + player.getName());
-		}
+		e.getPlayer().setPlayerListName(color + player.getName());
 	}
+
+
 
 	@EventHandler
 	public void damage(EntityDamageByEntityEvent e) {

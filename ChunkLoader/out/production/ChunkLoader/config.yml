@@ -1,0 +1,5 @@
+playerName: "Chunk Loader"
+chunkLoader:
+  id: SKULL_ITEM
+  name: "&c&lChunk Loader"
+blockLocations:
