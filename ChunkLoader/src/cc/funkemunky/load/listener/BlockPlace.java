@@ -23,7 +23,9 @@ public class BlockPlace implements Listener {
     public void chunkLoadEvent(ChunkUnloadEvent event) {
         if(ChunkLoader.getInstance().getChunkLoaders().stream().anyMatch(loc -> loc.getChunk() == event.getChunk())) {
             event.setCancelled(true);
-            event.getChunk().load();
+            if(!event.getChunk().isLoaded()) {
+                event.getChunk().load();
+            }
             Bukkit.broadcastMessage("chunk unload cancelled");
         }
     }

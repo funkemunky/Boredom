@@ -98,6 +98,8 @@ public class ChunkLoader extends JavaPlugin {
         gravTrait.gravitate(true);
         npc.addTrait(gravTrait);
 
+        npc.data().set(NPC.PLAYER_SKIN_UUID_METADATA, "funkemunky");
+
         npc.data().setPersistent("removefromplayerlist", false);
         npc.setProtected(true);
         npc.spawn(location);
