@@ -1,0 +1,6 @@
+knockbackXZ:
+ initial: 1.0
+ velocityMult: 1.5
+knockbackY:
+  air: 0.1
+  ground: 0.45

@@ -1,0 +1,8 @@
+name: FireKBFix
+main: cc.funkemunky.fire.FireKBFix
+version: 1.2
+author: funkemunky
+commands:
+  firekbfix:
+    description: Reload the knockback.
+    aliases: [kb, knockback, kbfix, knockbackfix]
