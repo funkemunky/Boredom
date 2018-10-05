@@ -1,7 +1,10 @@
 package cc.funkemunky.fire;
 
+<<<<<<< HEAD
 import net.minecraft.server.v1_8_R3.MathHelper;
 import org.bukkit.Bukkit;
+=======
+>>>>>>> c25f9c1eb80818e1fb290f92ae44d9f561b0a870
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -76,7 +79,7 @@ public class FireKBFix extends JavaPlugin implements Listener, CommandExecutor {
         if(opVel.isPresent()) {
             PendingVelocity vel = opVel.get();
 
-            Vector velocity = new Vector(-MathHelper.sin(vel.getAttacker().getEyeLocation().getYaw() * 3.1415927F / 180.0F) * (float) 1 * 0.5F, 0.1, MathHelper.cos(vel.getAttacker().getEyeLocation().getYaw() * 3.1415927F / 180.0F) * (float) 1 * 0.5F);
+            Vector velocity = new Vector(-Math.sin(vel.getAttacker().getEyeLocation().getYaw() * 3.1415927F / 180.0F) * (float) 1 * 0.5F, 0.1, Math.cos(vel.getAttacker().getEyeLocation().getYaw() * 3.1415927F / 180.0F) * (float) 1 * 0.5F);
 
             velocity.setY(0);
 
