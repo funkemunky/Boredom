@@ -1,10 +1,6 @@
 package cc.funkemunky.fire;
 
-<<<<<<< HEAD
-import net.minecraft.server.v1_8_R3.MathHelper;
 import org.bukkit.Bukkit;
-=======
->>>>>>> c25f9c1eb80818e1fb290f92ae44d9f561b0a870
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
