@@ -1,6 +1,7 @@
 package cc.funkemunky.fire;
 
 import net.minecraft.server.v1_8_R3.MathHelper;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -28,9 +29,13 @@ public class FireKBFix extends JavaPlugin implements Listener, CommandExecutor {
     private List<PendingVelocity> pendingVelocity;
     private Map<Player, Double> horizontalMovement;
     private Map<Player, Long> lastMovePacket;
+    private static FireKBFix instance;
+    public String serverVersion;
 
     public void onEnable() {
         pendingVelocity = new CopyOnWriteArrayList<>();
+        instance = this;
+        serverVersion = Bukkit.getServer().getClass().getPackage().getName().substring(23);
 
         horizontalMovement = new WeakHashMap<>();
         lastMovePacket = new WeakHashMap<>();
@@ -77,7 +82,7 @@ public class FireKBFix extends JavaPlugin implements Listener, CommandExecutor {
 
             double modifyX = getConfig().getDouble("knockbackXZ.initial") + (vel.getAttacker().isSprinting() ? 0.2 : 0) + (getPotionEffectLevel(event.getPlayer(), PotionEffectType.SPEED) * 0.1) + horizontalMovement.getOrDefault(event.getPlayer(), 0D);
             double modifyZ = getConfig().getDouble("knockbackXZ.initial") + (vel.getAttacker().isSprinting() ? 0.2 : 0) + (getPotionEffectLevel(event.getPlayer(), PotionEffectType.SPEED) * 0.1 + horizontalMovement.getOrDefault(event.getPlayer(), 0D));
-            event.setVelocity(new Vector(velocity.getX() * modifyX, vel.getPending().isOnGround() ? getConfig().getDouble("knockbackY.ground") : getConfig().getDouble("knockbackY.air"), velocity.getZ() * modifyZ));
+            ReflectionsUtil.sendVelocityPacket(new Vector(velocity.getX() * modifyX, vel.getPending().isOnGround() ? getConfig().getDouble("knockbackY.ground") : getConfig().getDouble("knockbackY.air"), velocity.getZ() * modifyZ), event.getPlayer());
             pendingVelocity.remove(vel);
         }
     }
@@ -99,5 +104,9 @@ public class FireKBFix extends JavaPlugin implements Listener, CommandExecutor {
             return pe.getAmplifier() + 1;
         }
         return 0;
+    }
+
+    public static FireKBFix getInstance() {
+        return instance;
     }
 }
