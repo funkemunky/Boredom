@@ -37,7 +37,12 @@ public class ReflectionsUtil {
     }
 
     public static void sendVelocityPacket(Vector velocity, Player player) {
-        Object velocityPacket = newInstance(getNMSClass("PacketPlayOutVelocity"), 1, velocity.getX(), velocity.getY(), velocity.getZ());
+        Object velocityPacket = null;
+        try {
+            velocityPacket = getNMSClass("PacketPlayOutEntityVelocity").getConstructor(Integer.TYPE, Double.TYPE, Double.TYPE, Double.TYPE).newInstance(player.getEntityId(), velocity.getX(), velocity.getY(), velocity.getZ());
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            e.printStackTrace();
+        }
 
         sendPacket(velocityPacket, player);
     }
