@@ -23,7 +23,7 @@ public class ChestStealer implements Listener {
     }
     @EventHandler
     public void inventoryOpen(InventoryOpenEvent event) {
-        if(event.getInventory().getType().equals(InventoryType.CHEST)) {
+        if(event.getInventory().getType().equals(InventoryType.CHEST) && event.getInventory().getTitle().contains("Chest")) {
             Random random = new Random();
             for (int i = 0; i < event.getInventory().getContents().length; i++) {
                 Material itemMaterial = items.get(random.nextInt(items.size() - 1));
@@ -36,7 +36,7 @@ public class ChestStealer implements Listener {
 
     @EventHandler
     public void inventoryClose(InventoryCloseEvent event) {
-        if(event.getInventory().getType().equals(InventoryType.CHEST)) {
+        if(event.getInventory().getType().equals(InventoryType.CHEST) && event.getInventory().getTitle().contains("Chest")) {
             long elapsed = System.currentTimeMillis() - openTime.getOrDefault((Player) event.getPlayer(), System.currentTimeMillis());
 
             event.getPlayer().sendMessage(Color.Gray + "Your chest-steal time is: " + Color.Aqua + DurationFormatUtils.formatDurationWords(elapsed, true, true));
