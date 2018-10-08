@@ -1,7 +1,49 @@
-/.metadata/
-/.recommenders/
 
-*.xml
+# Compiled class file
+*.class
+
+# Log file
+*.log
+*.gz
+
+# BlueJ files
+*.ctxt
+
+# Iml files
 *.iml
+
+# Mac Stuff
+*/.DS_Store
+*.dll
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Intellij
 .idea/*
-out/*
+*.iml
+*.iws
+
+# Maven
+log/
+target/
+
+# Minecraft Files
+workspace/*
+
+# Depression Fiels
+workspace/Depression/*
+.idea/workspace.xml
+src/main/.DS_Store
+workspace/assets/*
+assets/*
+resourcepacks/*
+*.dat
