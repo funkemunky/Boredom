@@ -1,2 +1,7 @@
 /.metadata/
 /.recommenders/
+
+*.xml
+*.iml
+.idea/*
+out/*
