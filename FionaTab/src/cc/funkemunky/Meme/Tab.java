@@ -1,5 +1,6 @@
 package cc.funkemunky.Meme;
 
+import cc.funkemunky.Meme.listeners.ChestStealer;
 import lombok.Getter;
 import net.milkbowl.vault.permission.Permission;
 import org.bukkit.Bukkit;
@@ -19,6 +20,7 @@ public class Tab extends JavaPlugin{
 		instance = this;
 
 		Bukkit.getPluginManager().registerEvents(new AllListeners(), this);
+		Bukkit.getPluginManager().registerEvents(new ChestStealer(), this);
 
 		setupPermissions();
 		saveDefaultConfig();
