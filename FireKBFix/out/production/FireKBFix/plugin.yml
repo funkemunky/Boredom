@@ -1,6 +1,6 @@
 name: FireKBFix
 main: cc.funkemunky.fire.FireKBFix
-version: 1.2
+version: b10
 author: funkemunky
 commands:
   firekbfix:

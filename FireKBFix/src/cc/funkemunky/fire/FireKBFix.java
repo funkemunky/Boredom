@@ -86,7 +86,7 @@ public class FireKBFix extends JavaPlugin implements Listener, CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender.hasPermission("firekb.reload")) {
+        if(sender.hasPermission("firekbfix.reload") || sender.hasPermission("firekbfix.admin")) {
             if(args.length == 0) {
                 sender.sendMessage(ChatColor.RED + "Usage: /" + label + " <reload, setkb> [args]");
             } else {
