@@ -1,0 +1,8 @@
+name: Kit
+main: cc.funkemunky.kit.Kit
+author: funkemunky
+depend: [Atlas]
+version: 1.0
+commands:
+  kit:
+  stats:
