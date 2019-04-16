@@ -2,7 +2,9 @@ package cc.funkemunky.Meme.listeners;
 
 import cc.funkemunky.Meme.utils.Color;
 import org.apache.commons.lang.time.DurationFormatUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.block.DoubleChest;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -10,6 +12,7 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.material.Chest;
 
 import java.util.*;
 
@@ -21,9 +24,10 @@ public class ChestStealer implements Listener {
         items = Arrays.asList(Material.DIAMOND_AXE, Material.DIAMOND_SWORD, Material.IRON_SWORD, Material.GOLDEN_APPLE, Material.COOKED_BEEF, Material.ARROW, Material.BOW);
         openTime = new WeakHashMap<>();
     }
+
     @EventHandler
     public void inventoryOpen(InventoryOpenEvent event) {
-        if(event.getInventory().getType().equals(InventoryType.CHEST) && event.getInventory().getTitle().contains("Chest")) {
+        if(event.getInventory().getHolder() instanceof Chest || event.getInventory().getHolder() instanceof DoubleChest) {
             Random random = new Random();
             for (int i = 0; i < event.getInventory().getContents().length; i++) {
                 Material itemMaterial = items.get(random.nextInt(items.size() - 1));
@@ -36,10 +40,10 @@ public class ChestStealer implements Listener {
 
     @EventHandler
     public void inventoryClose(InventoryCloseEvent event) {
-        if(event.getInventory().getType().equals(InventoryType.CHEST) && event.getInventory().getTitle().contains("Chest")) {
-            long elapsed = System.currentTimeMillis() - openTime.getOrDefault((Player) event.getPlayer(), System.currentTimeMillis());
+        if(event.getInventory().getHolder() instanceof Chest || event.getInventory().getHolder() instanceof DoubleChest) {
+            long elapsed = System.currentTimeMillis() - openTime.getOrDefault(event.getPlayer(), System.currentTimeMillis());
 
-            event.getPlayer().sendMessage(Color.Gray + "Your chest-steal time is: " + Color.Aqua + DurationFormatUtils.formatDurationWords(elapsed, true, true));
+            event.getPlayer().sendMessage(Color.Gray + "Your chest-steal time is: " + Color.Aqua + DurationFormatUtils.formatDurationWords(elapsed, true, true) + "seconds");
             event.getPlayer().getInventory().clear();
         }
     }
