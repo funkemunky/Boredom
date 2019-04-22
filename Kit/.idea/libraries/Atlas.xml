@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="Atlas">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../Atlas/API/out/artifacts/Atlas_jar/Atlas.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../Fiona/Iris/depends/Atlas.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
