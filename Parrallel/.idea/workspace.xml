@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="76091f69-4774-4f30-836d-4db71fb4b826" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../ForgeClient/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Mojank/.idea/artifacts/Mojank_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Mojank/.idea/libraries/lombok_1_18_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Mojank/.idea/libraries/spigot_1_8_8_R0_1_SNAPSHOT_latest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Mojank/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ObsidianSpeed/.idea/libraries/Commons_1_0_SNAPSHOT.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cc/funkemunky/test/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Test/src/cc/funkemunky/test/system/Cancellable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Test/src/cc/funkemunky/test/system/Event.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Test/src/cc/funkemunky/test/system/EventManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Test/src/cc/funkemunky/test/system/EventMethod.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Test/src/cc/funkemunky/test/system/Listener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AGNot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AGNot/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AGNot/AGNot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../AGNot/AGNot.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/artifacts/auth.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__be_maximvdw_spigotsite_0_3_1_SNAPSHOT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__be_maximvdw_spigotsite_api_0_3_2_SNAPSHOT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__com_googlecode_json_simple_json_simple_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__commons_codec_commons_codec_1_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__commons_io_commons_io_2_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__commons_net_commons_net_3_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__junit_junit_4_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__net_sourceforge_cssparser_cssparser_0_9_24.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__net_sourceforge_htmlunit_htmlunit_2_29.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__net_sourceforge_htmlunit_htmlunit_core_js_2_28.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__net_sourceforge_htmlunit_neko_htmlunit_2_28.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__org_apache_commons_commons_text_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__org_apache_httpcomponents_httpmime_4_5_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__org_eclipse_jetty_jetty_client_9_4_8_v20171121.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__org_eclipse_jetty_jetty_http_9_4_8_v20171121.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__org_eclipse_jetty_jetty_io_9_4_8_v20171121.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__org_eclipse_jetty_jetty_util_9_4_8_v20171121.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__org_eclipse_jetty_jetty_xml_9_4_8_v20171121.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__org_eclipse_jetty_websocket_websocket_api_9_4_8_v20171121.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__org_eclipse_jetty_websocket_websocket_client_9_4_8_v20171121.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__org_eclipse_jetty_websocket_websocket_common_9_4_8_v20171121.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__org_jsoup_jsoup_1_7_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__org_w3c_css_sac_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__xalan_serializer_2_7_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__xalan_xalan_2_7_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__xerces_xercesImpl_2_11_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/Maven__xml_apis_xml_apis_1_4_01.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/com_googlecode_json_simple_json_simple_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/junit_junit_4_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/net_sourceforge_htmlunit_htmlunit_2_29.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/libraries/org_jsoup_jsoup_1_7_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FionaDownloadListener/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FionaDownloadListener/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/FionaDownloadListener.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/out/artifacts/auth/auth.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/SpigotSiteCore.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/SpigotSite.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/SpigotSiteAPI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/exceptions/ConnectionFailedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/exceptions/PermissionException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/exceptions/SpamWarningException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/forum/Forum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/forum/ForumCategory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/forum/ForumManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/forum/Post.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/forum/ProfilePost.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/forum/Thread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/resource/Buyer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/resource/PremiumResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/resource/Rating.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/resource/Resource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/resource/ResourceCategory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/resource/ResourceManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/resource/ResourceUpdate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/user/Conversation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/user/ConversationManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/user/Medal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/user/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/user/UserManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/user/UserRank.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/user/UserStatistics.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/user/exceptions/EmptyCredentialsException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/user/exceptions/InvalidCredentialsException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/api/user/exceptions/TwoFactorAuthenticationException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/forum/SpigotForum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/forum/SpigotForumCategory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/forum/SpigotForumManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/forum/SpigotPost.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/forum/SpigotProfilePost.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/http/HTTPDownloadResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/http/HTTPRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/http/HTTPResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/http/HTTPUnitRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/http/JsoupRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/http/Request.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/resource/SpigotBuyer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/resource/SpigotPremiumResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/resource/SpigotResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/resource/SpigotResourceCategory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/resource/SpigotResourceManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/resource/SpigotResourceRating.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/resource/SpigotResourceUpdate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/user/SpigotConversation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/user/SpigotConversationManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/user/SpigotUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/user/SpigotUserManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/user/SpigotUserStatistics.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/utils/StringUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/be/maximvdw/spigotsite/utils/TOTP.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/cc/funkemunky/download/FionaDownload.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/src/main/java/cc/funkemunky/download/TxtFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/SpigotSiteCore.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/SpigotSite.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/SpigotSiteAPI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/exceptions/ConnectionFailedException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/exceptions/PermissionException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/exceptions/SpamWarningException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/forum/Forum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/forum/ForumCategory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/forum/ForumManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/forum/Post.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/forum/ProfilePost.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/forum/Thread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/resource/Buyer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/resource/PremiumResource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/resource/Rating.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/resource/Resource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/resource/ResourceCategory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/resource/ResourceManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/resource/ResourceUpdate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/user/Conversation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/user/ConversationManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/user/Medal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/user/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/user/UserManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/user/UserRank.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/user/UserStatistics.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/user/exceptions/EmptyCredentialsException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/user/exceptions/InvalidCredentialsException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/api/user/exceptions/TwoFactorAuthenticationException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/forum/SpigotForum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/forum/SpigotForumCategory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/forum/SpigotForumManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/forum/SpigotPost.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/forum/SpigotProfilePost.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/http/HTTPDownloadResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/http/HTTPRequest$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/http/HTTPRequest$Method.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/http/HTTPRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/http/HTTPResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/http/HTTPUnitRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/http/JsoupRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/http/Request.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/resource/SpigotBuyer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/resource/SpigotPremiumResource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/resource/SpigotResource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/resource/SpigotResourceCategory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/resource/SpigotResourceManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/resource/SpigotResourceRating.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/resource/SpigotResourceUpdate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/user/SpigotConversation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/user/SpigotConversationManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/user/SpigotUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/user/SpigotUserManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/user/SpigotUserStatistics.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/utils/StringUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/utils/TOTP$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/utils/TOTP$TimeTracker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/be/maximvdw/spigotsite/utils/TOTP.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/cc/funkemunky/download/FionaDownload.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FionaDownloadListener/target/classes/cc/funkemunky/download/TxtFile.class" beforeDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/cc/funkemunky/test/Test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/cc/funkemunky/test/Test.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="787" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ParrallelTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Parrallel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ParrallelTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Parrallel" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555943427747" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cc.funkemunky.test.Test" />
+      <module name="ParrallelTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cc.funkemunky.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="76091f69-4774-4f30-836d-4db71fb4b826" name="Default Changelist" comment="" />
+      <created>1555942963226</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1555942963226</updated>
+      <workItem from="1555942964429" duration="487000" />
+      <workItem from="1555943500721" duration="101000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="588000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1440" height="783" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3299566" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Maven" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/cc/funkemunky/test/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8.0_171</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
