@@ -10,8 +10,12 @@ public class Test {
     private static List<Integer> list = new ArrayList<>();
     public static void main(String[] args) {
 
+        for(int i = 0 ; i < 1000 ; i++) {
+            list.add(i);
+        }
+
         long timeStamp = System.currentTimeMillis();
-        computeParallel(100);
+        list.parallelStream().forEach(System.out::println);
         long elapsed = System.currentTimeMillis() - timeStamp;
 
 
