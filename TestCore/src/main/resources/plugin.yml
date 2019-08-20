@@ -2,4 +2,5 @@ name: TestCore
 main: cc.funkemunky.test.TestCore
 author: funkemunky
 version: ${project.version}
-depend: [Kauri, Atlas]
+depend: [Atlas]
+softdepend: [Kauri]

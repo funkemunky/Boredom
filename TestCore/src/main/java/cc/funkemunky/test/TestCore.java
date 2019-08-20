@@ -2,7 +2,7 @@ package cc.funkemunky.test;
 
 import cc.funkemunky.api.Atlas;
 import cc.funkemunky.api.utils.Color;
-import cc.funkemunky.api.utils.ConfigSetting;
+import cc.funkemunky.test.listeners.JoinListeners;
 import cc.funkemunky.test.utils.ConfigSettings;
 import me.tigerhix.lib.scoreboard.ScoreboardLib;
 import me.tigerhix.lib.scoreboard.common.EntryBuilder;
@@ -21,17 +21,20 @@ public class TestCore extends JavaPlugin {
     public Map<Player, Scoreboard> scoreboardMap = new WeakHashMap<>();
     public Map<UUID, String> lastViolation = new HashMap<>();
     public static TestCore INSTANCE;
+    public boolean kauriEnabled;
 
     public void onEnable() {
         INSTANCE = this;
 
-        ScoreboardLib.setPluginInstance(this);
-        for(Player player : Bukkit.getOnlinePlayers()) {
-            Scoreboard scoreboard = getScoreboard(player);
-            scoreboard.activate();
-            scoreboardMap.put(player, scoreboard);
+        if(kauriEnabled = Bukkit.getPluginManager().getPlugin("Kauri") != null) {
+            ScoreboardLib.setPluginInstance(this);
+            for(Player player : Bukkit.getOnlinePlayers()) {
+                Scoreboard scoreboard = getScoreboard(player);
+                scoreboard.activate();
+                scoreboardMap.put(player, scoreboard);
+            }
+            Bukkit.getPluginManager().registerEvents(new JoinListeners(), this);
         }
-
         Atlas.getInstance().initializeScanner(getClass(), this, true, true);
     }
 

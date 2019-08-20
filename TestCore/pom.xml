@@ -73,13 +73,13 @@
         <dependency>
             <groupId>cc.funkemunky.anticheat</groupId>
             <artifactId>API</artifactId>
-            <version>b35</version>
+            <version>b10</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>cc.funkemunky.plugins</groupId>
             <artifactId>Atlas</artifactId>
-            <version>1.3.2</version>
+            <version>1.5</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
