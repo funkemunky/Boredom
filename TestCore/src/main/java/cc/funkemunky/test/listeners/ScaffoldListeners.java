@@ -41,7 +41,7 @@ public class ScaffoldListeners implements Listener {
     @EventHandler
     public void onEvent(BlockPlaceEvent event) {
         if(event.getBlockPlaced() != null && event.getBlockPlaced().getType().equals(Material.BRICK)) {
-            event.getPlayer().getItemInHand().setAmount(2);
+            event.getPlayer().getItemInHand().setAmount(5);
             event.getPlayer().updateInventory();
             blocksPlaced.put(event.getBlockPlaced(), System.currentTimeMillis());
         }
@@ -56,7 +56,7 @@ public class ScaffoldListeners implements Listener {
                 playerInventory.put(event.getPlayer().getUniqueId(), event.getPlayer().getInventory().getContents());
 
                 event.getPlayer().getInventory().clear();
-                event.getPlayer().getInventory().addItem(new ItemStack(Material.BRICK, 2));
+                event.getPlayer().getInventory().addItem(new ItemStack(Material.BRICK, 5));
             }
         } else if(playerInventory.containsKey(event.getPlayer().getUniqueId())) {
             event.getPlayer().getInventory().setContents(playerInventory.get(event.getPlayer().getUniqueId()));
