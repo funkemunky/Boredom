@@ -1,24 +1,18 @@
 package cc.funkemunky.test;
 
 import cc.funkemunky.api.Atlas;
-import cc.funkemunky.api.utils.Color;
 import cc.funkemunky.test.listeners.JoinListeners;
-import cc.funkemunky.test.utils.ConfigSettings;
-import me.tigerhix.lib.scoreboard.ScoreboardLib;
-import me.tigerhix.lib.scoreboard.common.EntryBuilder;
-import me.tigerhix.lib.scoreboard.common.animate.HighlightedString;
-import me.tigerhix.lib.scoreboard.type.Entry;
-import me.tigerhix.lib.scoreboard.type.Scoreboard;
-import me.tigerhix.lib.scoreboard.type.ScoreboardHandler;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
+import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public class TestCore extends JavaPlugin {
 
-    public Map<Player, Scoreboard> scoreboardMap = new WeakHashMap<>();
+    //public Map<Player, Scoreboard> scoreboardMap = new WeakHashMap<>();
     public Map<UUID, String> lastViolation = new HashMap<>();
     public static TestCore INSTANCE;
     public boolean kauriEnabled;
@@ -26,7 +20,7 @@ public class TestCore extends JavaPlugin {
     public void onEnable() {
         INSTANCE = this;
 
-        if(kauriEnabled = Bukkit.getPluginManager().getPlugin("Kauri") != null) {
+        /*if(kauriEnabled = Bukkit.getPluginManager().getPlugin("Kauri") != null) {
             ScoreboardLib.setPluginInstance(this);
             for(Player player : Bukkit.getOnlinePlayers()) {
                 Scoreboard scoreboard = getScoreboard(player);
@@ -34,11 +28,20 @@ public class TestCore extends JavaPlugin {
                 scoreboardMap.put(player, scoreboard);
             }
             Bukkit.getPluginManager().registerEvents(new JoinListeners(), this);
-        }
+        }*/
+        Bukkit.getPluginManager().registerEvents(new JoinListeners(), this);
         Atlas.getInstance().initializeScanner(getClass(), this, true, true);
     }
 
-    public Scoreboard getScoreboard(Player player) {
+    public void onDisable() {
+        HandlerList.unregisterAll(this);
+        Atlas.getInstance().getEventManager().unregisterAll(this);
+        Atlas.getInstance().getCommandManager().unregisterCommand("renameitem");
+        Atlas.getInstance().getCommandManager().unregisterCommand("buykauri");
+        Bukkit.getScheduler().cancelTasks(this);
+    }
+
+    /*public Scoreboard getScoreboard(Player player) {
         return ScoreboardLib.createScoreboard(player).setHandler(new ScoreboardHandler() {
 
             private HighlightedString testServer = new HighlightedString("Kauri Test Server", "&f&l", "&7&l");
@@ -64,5 +67,5 @@ public class TestCore extends JavaPlugin {
                         .blank().build();
             }
         }).setUpdateInterval(5);
-    }
+    }*/
 }

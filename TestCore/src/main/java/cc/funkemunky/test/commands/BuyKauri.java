@@ -1,6 +1,5 @@
 package cc.funkemunky.test.commands;
 
-import cc.funkemunky.anticheat.api.checks.Check;
 import cc.funkemunky.api.commands.ancmd.Command;
 import cc.funkemunky.api.commands.ancmd.CommandAdapter;
 import cc.funkemunky.api.utils.Color;

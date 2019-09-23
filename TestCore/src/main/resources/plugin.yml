@@ -3,4 +3,3 @@ main: cc.funkemunky.test.TestCore
 author: funkemunky
 version: ${project.version}
 depend: [Atlas]
-softdepend: [Kauri]

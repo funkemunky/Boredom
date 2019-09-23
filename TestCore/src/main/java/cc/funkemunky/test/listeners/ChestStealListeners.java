@@ -2,10 +2,8 @@ package cc.funkemunky.test.listeners;
 
 import cc.funkemunky.api.utils.Color;
 import cc.funkemunky.api.utils.Init;
-import cc.funkemunky.api.utils.MiscUtils;
 import org.apache.commons.lang.time.DurationFormatUtils;
 import org.bukkit.Material;
-import org.bukkit.block.Chest;
 import org.bukkit.block.DoubleChest;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

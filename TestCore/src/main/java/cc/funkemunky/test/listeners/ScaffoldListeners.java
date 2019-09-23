@@ -4,8 +4,6 @@ import cc.funkemunky.api.utils.BoundingBox;
 import cc.funkemunky.api.utils.Init;
 import cc.funkemunky.api.utils.RunUtils;
 import cc.funkemunky.test.TestCore;
-import net.minecraft.server.v1_8_R3.ItemSaddle;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
@@ -13,14 +11,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.server.PluginDisableEvent;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-import java.util.WeakHashMap;
 import java.util.concurrent.TimeUnit;
 
 @Init
