@@ -1,7 +1,10 @@
 package cc.funkemunky.test;
 
 import cc.funkemunky.api.Atlas;
+import cc.funkemunky.api.bungee.BungeeManager;
+import cc.funkemunky.api.utils.ConfigSetting;
 import cc.funkemunky.test.listeners.JoinListeners;
+import cc.funkemunky.test.utils.ConfigSettings;
 import org.bukkit.Bukkit;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -34,6 +37,7 @@ public class TestCore extends JavaPlugin {
     }
 
     public void onDisable() {
+        runBungeeStuff();
         HandlerList.unregisterAll(this);
         Atlas.getInstance().getEventManager().unregisterAll(this);
         Atlas.getInstance().getCommandManager().unregisterCommand("renameitem");
@@ -68,4 +72,13 @@ public class TestCore extends JavaPlugin {
             }
         }).setUpdateInterval(5);
     }*/
+
+    private void runBungeeStuff() {
+        if(ConfigSettings.bungeeEnabled) {
+            Bukkit.getOnlinePlayers().forEach(player -> {
+                Atlas.getInstance().getBungeeManager().getBungeeAPI()
+                        .movePlayerToServer(player.getUniqueId(), ConfigSettings.backupServer);
+            });
+        }
+    }
 }
