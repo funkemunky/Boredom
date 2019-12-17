@@ -24,14 +24,19 @@ import java.util.concurrent.TimeUnit;
 public class ScaffoldListeners implements Listener {
     //135 108 387 107 125 355
 
-    private static BoundingBox placeArea = new BoundingBox(107, 108, 355, 135, 125, 387);;
+    private static BoundingBox placeArea = new BoundingBox(
+            107, 108, 355,
+            135, 125, 387);
 
     private static Map<Block, Long> blocksPlaced = new HashMap<>();
     private static Map<UUID, ItemStack[]> playerInventory = new HashMap<>();
 
     public ScaffoldListeners() {
         RunUtils.taskTimer(() -> {
-            blocksPlaced.keySet().stream().filter(key -> System.currentTimeMillis() - blocksPlaced.get(key) > TimeUnit.SECONDS.toMillis(10)).forEach(key -> key.setType(Material.AIR));
+            blocksPlaced.keySet().stream()
+                    .filter(key ->
+                            System.currentTimeMillis() - blocksPlaced.get(key) > TimeUnit.SECONDS.toMillis(10))
+                    .forEach(key -> key.setType(Material.AIR));
         }, 100L, 10L);
     }
 
@@ -46,7 +51,9 @@ public class ScaffoldListeners implements Listener {
 
     @EventHandler
     public void onEvent(PlayerMoveEvent event) {
-        BoundingBox playerBox = new BoundingBox(event.getTo().toVector(), event.getTo().toVector()).grow(0.3f, 0, 0.3f).add(0,0,0,0,1.8f,0);
+        BoundingBox playerBox = new BoundingBox(event.getTo().toVector(), event.getTo().toVector())
+                .grow(0.3f, 0, 0.3f)
+                .add(0,0,0,0,1.8f,0);
 
         if(playerBox.intersectsWithBox(placeArea)) {
             if(!playerInventory.containsKey(event.getPlayer().getUniqueId())) {

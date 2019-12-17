@@ -1,6 +1,7 @@
 package cc.funkemunky.test;
 
 import cc.funkemunky.api.Atlas;
+import cc.funkemunky.api.bungee.BungeeAPI;
 import cc.funkemunky.api.utils.Color;
 import cc.funkemunky.api.utils.MathUtils;
 import cc.funkemunky.test.listeners.JoinListeners;
@@ -44,6 +45,7 @@ public class TestCore extends JavaPlugin {
 
     public void onDisable() {
         ScaffoldListeners.reset();
+        runBungeeStuff();
         HandlerList.unregisterAll(this);
         Atlas.getInstance().getEventManager().unregisterAll(this);
         Atlas.getInstance().getCommandManager().unregisterCommand("renameitem");
@@ -93,5 +95,12 @@ public class TestCore extends JavaPlugin {
                         .blank().build();
             }
         }).setUpdateInterval(2);
+    }
+
+    private void runBungeeStuff() {
+        if(ConfigSettings.bungeeEnabled) {
+            Bukkit.getOnlinePlayers().forEach(player ->
+                            BungeeAPI.movePlayerToServer(player.getUniqueId(), ConfigSettings.backupServer));
+        }
     }
 }

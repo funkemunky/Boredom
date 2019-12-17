@@ -1,6 +1,7 @@
 package cc.funkemunky.test.listeners;
 
 import cc.funkemunky.test.TestCore;
+import me.tigerhix.lib.scoreboard.type.Scoreboard;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -11,11 +12,11 @@ public class JoinListeners implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onPlayerJoin(PlayerJoinEvent event) {
-        /*Scoreboard scoreboard = TestCore.INSTANCE.getScoreboard(event.getPlayer());
+        Scoreboard scoreboard = TestCore.INSTANCE.getScoreboard(event.getPlayer());
 
-        TestCore.INSTANCE.scoreboardMap.put(event.getPlayer(), scoreboard);
+        TestCore.INSTANCE.scoreboardMap.put(event.getPlayer().getUniqueId(), scoreboard);
 
-        scoreboard.activate();*/
+        scoreboard.activate();
 
         event.setJoinMessage(null);
     }
