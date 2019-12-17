@@ -57,15 +57,9 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>cc.funkemunky.anticheat</groupId>
-      <artifactId>API</artifactId>
-      <version>b10</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
       <groupId>cc.funkemunky.plugins</groupId>
       <artifactId>Atlas</artifactId>
-      <version>1.5.2</version>
+      <version>1.7</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>

@@ -59,21 +59,26 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>me.tigerhix.lib</groupId>
+            <artifactId>scoreboard</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>org.github.paperspigot</groupId>
             <artifactId>1.8.8</artifactId>
             <version>1.8.8</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>cc.funkemunky.anticheat</groupId>
+            <groupId>dev.brighten.kauri</groupId>
             <artifactId>API</artifactId>
-            <version>b10</version>
-            <scope>provided</scope>
+            <version>2.2</version>
         </dependency>
         <dependency>
             <groupId>cc.funkemunky.plugins</groupId>
             <artifactId>Atlas</artifactId>
-            <version>1.5.5</version>
+            <version>1.7</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

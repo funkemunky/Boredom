@@ -4,6 +4,7 @@ import cc.funkemunky.api.utils.BoundingBox;
 import cc.funkemunky.api.utils.Init;
 import cc.funkemunky.api.utils.RunUtils;
 import cc.funkemunky.test.TestCore;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
@@ -15,6 +16,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -66,5 +68,21 @@ public class ScaffoldListeners implements Listener {
             blocksPlaced.keySet().forEach(block -> block.setType(Material.AIR));
             blocksPlaced.clear();
         }
+    }
+
+    public static void reset() {
+        blocksPlaced.keySet().forEach(block -> {
+            block.setType(Material.AIR);
+            blocksPlaced.remove(block);
+        });
+        playerInventory.keySet().stream()
+                .map(Bukkit::getPlayer)
+                .filter(Objects::nonNull)
+                .forEach(player -> {
+                    player.getInventory().setContents(playerInventory.get(player.getUniqueId()));
+                    player.updateInventory();
+                    playerInventory.remove(player.getUniqueId());
+                });
+
     }
 }

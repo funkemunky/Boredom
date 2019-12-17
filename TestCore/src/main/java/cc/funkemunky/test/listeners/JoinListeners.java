@@ -1,9 +1,11 @@
 package cc.funkemunky.test.listeners;
 
+import cc.funkemunky.test.TestCore;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 public class JoinListeners implements Listener {
 
@@ -18,8 +20,8 @@ public class JoinListeners implements Listener {
         event.setJoinMessage(null);
     }
 
-   /* @EventHandler
-    public void onCheat(PlayerCheatEvent event) {
-        TestCore.INSTANCE.lastViolation.put(event.getPlayer().getUniqueId(), event.getCheck().getName());
-    }*/
+   @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent event) {
+       TestCore.INSTANCE.scoreboardMap.remove(event.getPlayer().getUniqueId());
+   }
 }
