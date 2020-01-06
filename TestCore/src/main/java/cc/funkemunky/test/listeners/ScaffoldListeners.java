@@ -14,10 +14,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.server.PluginDisableEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @Init
@@ -28,7 +25,7 @@ public class ScaffoldListeners implements Listener {
             107, 108, 355,
             135, 125, 387);
 
-    private static Map<Block, Long> blocksPlaced = new HashMap<>();
+    private static Map<Block, Long> blocksPlaced = new WeakHashMap<>();
     private static Map<UUID, ItemStack[]> playerInventory = new HashMap<>();
 
     public ScaffoldListeners() {
@@ -36,7 +33,10 @@ public class ScaffoldListeners implements Listener {
             blocksPlaced.keySet().stream()
                     .filter(key ->
                             System.currentTimeMillis() - blocksPlaced.get(key) > TimeUnit.SECONDS.toMillis(10))
-                    .forEach(key -> key.setType(Material.AIR));
+                    .forEach(key -> {
+                        key.setType(Material.AIR);
+                        blocksPlaced.remove(key);
+                    });
         }, 100L, 10L);
     }
 

@@ -7,6 +7,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.scoreboard.Score;
 
 public class JoinListeners implements Listener {
 
@@ -23,6 +24,11 @@ public class JoinListeners implements Listener {
 
    @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
-       TestCore.INSTANCE.scoreboardMap.remove(event.getPlayer().getUniqueId());
+       Scoreboard board = TestCore.INSTANCE.scoreboardMap.get(event.getPlayer().getUniqueId());
+
+       if(board != null) {
+           board.deactivate();
+           TestCore.INSTANCE.scoreboardMap.remove(event.getPlayer().getUniqueId());
+       }
    }
 }

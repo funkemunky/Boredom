@@ -9,7 +9,7 @@ import java.util.*;
 public class User {
     private static Map<UUID, User> users = new HashMap<>();
     public final UUID uuid;
-    public LinkedList<Violation> vls = new LinkedList<>();
+    public Map<String, Float> violations = new HashMap<>();
 
     public static User getUser(UUID uuid) {
         return users.computeIfAbsent(uuid, key -> {
