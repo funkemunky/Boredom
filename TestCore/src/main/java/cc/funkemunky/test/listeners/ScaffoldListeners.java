@@ -25,11 +25,12 @@ public class ScaffoldListeners implements Listener {
             107, 108, 355,
             135, 125, 387);
 
-    private static Map<Block, Long> blocksPlaced = new WeakHashMap<>();
+    private static Map<Block, Long> blocksPlaced = new HashMap<>();
     private static Map<UUID, ItemStack[]> playerInventory = new HashMap<>();
 
     public ScaffoldListeners() {
         RunUtils.taskTimer(() -> {
+            blocksPlaced.keySet().stream().filter(Objects::isNull).forEach(blocksPlaced::remove);
             blocksPlaced.keySet().stream()
                     .filter(key ->
                             System.currentTimeMillis() - blocksPlaced.get(key) > TimeUnit.SECONDS.toMillis(10))
