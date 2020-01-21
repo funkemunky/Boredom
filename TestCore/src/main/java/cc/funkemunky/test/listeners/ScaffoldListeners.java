@@ -3,6 +3,7 @@ package cc.funkemunky.test.listeners;
 import cc.funkemunky.api.utils.BoundingBox;
 import cc.funkemunky.api.utils.Init;
 import cc.funkemunky.api.utils.RunUtils;
+import cc.funkemunky.api.utils.Tuple;
 import cc.funkemunky.test.TestCore;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -15,6 +16,7 @@ import org.bukkit.event.server.PluginDisableEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 @Init
@@ -25,10 +27,15 @@ public class ScaffoldListeners implements Listener {
             107, 108, 355,
             135, 125, 387);
 
-    private static Map<Block, Long> blocksPlaced = new HashMap<>();
+    private static Map<Block, Long> blocksPlaced = new ConcurrentHashMap<>();
     private static Map<UUID, ItemStack[]> playerInventory = new HashMap<>();
 
     public ScaffoldListeners() {
+        for (Tuple<Block, BoundingBox> world : placeArea.getCollidingBlocks(Bukkit.getWorld("world"))) {
+            if(!world.one.getType().equals(Material.BRICK)) continue;
+
+            world.one.setType(Material.AIR);
+        }
         RunUtils.taskTimer(() -> {
             blocksPlaced.keySet().stream().filter(Objects::isNull).forEach(blocksPlaced::remove);
             blocksPlaced.keySet().stream()
@@ -38,7 +45,7 @@ public class ScaffoldListeners implements Listener {
                         key.setType(Material.AIR);
                         blocksPlaced.remove(key);
                     });
-        }, 100L, 10L);
+        }, 100L, 40L);
     }
 
     @EventHandler
