@@ -27,7 +27,7 @@ public class ScaffoldListeners implements Listener {
             107, 108, 355,
             135, 125, 387);
 
-    private static Map<Block, Long> blocksPlaced = new ConcurrentHashMap<>();
+    private static Map<Block, Long> blocksPlaced = Collections.synchronizedMap(new HashMap<>());
     private static Map<UUID, ItemStack[]> playerInventory = new HashMap<>();
 
     public ScaffoldListeners() {

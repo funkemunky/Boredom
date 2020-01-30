@@ -13,11 +13,13 @@ public class JoinListeners implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onPlayerJoin(PlayerJoinEvent event) {
-        Scoreboard scoreboard = TestCore.INSTANCE.getScoreboard(event.getPlayer());
+        if(TestCore.INSTANCE.kauriEnabled) {
+            Scoreboard scoreboard = TestCore.INSTANCE.getScoreboard(event.getPlayer());
 
-        TestCore.INSTANCE.scoreboardMap.put(event.getPlayer().getUniqueId(), scoreboard);
+            TestCore.INSTANCE.scoreboardMap.put(event.getPlayer().getUniqueId(), scoreboard);
 
-        scoreboard.activate();
+            scoreboard.activate();
+        }
 
         event.setJoinMessage(null);
     }
