@@ -1,12 +1,11 @@
 package cc.funkemunky.test.listeners;
 
-import cc.funkemunky.api.utils.BoundingBox;
-import cc.funkemunky.api.utils.Init;
-import cc.funkemunky.api.utils.RunUtils;
-import cc.funkemunky.api.utils.Tuple;
+import cc.funkemunky.api.utils.*;
+import cc.funkemunky.api.utils.world.types.SimpleCollisionBox;
 import cc.funkemunky.test.TestCore;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,21 +22,22 @@ import java.util.concurrent.TimeUnit;
 public class ScaffoldListeners implements Listener {
     //135 108 387 107 125 355
 
-    private static BoundingBox placeArea = new BoundingBox(
-            107, 108, 355,
-            135, 125, 387);
+    private static SimpleCollisionBox placeArea = new SimpleCollisionBox(
+            108, 108, 356,
+            134, 125, 386);
 
-    private static Map<Block, Long> blocksPlaced = Collections.synchronizedMap(new HashMap<>());
+    private static Map<Block, Long> blocksPlaced = new ConcurrentHashMap<>();
     private static Map<UUID, ItemStack[]> playerInventory = new HashMap<>();
+    private static World world;
 
     public ScaffoldListeners() {
-        for (Tuple<Block, BoundingBox> world : placeArea.getCollidingBlocks(Bukkit.getWorld("world"))) {
-            if(!world.one.getType().equals(Material.BRICK)) continue;
+        world = Bukkit.getWorld("world");
+        for (Block block : Helper.getBlocksNearby2(world, placeArea, Materials.SOLID)) {
+            if(!block.getType().equals(Material.BRICK)) continue;
 
-            world.one.setType(Material.AIR);
+            block.setType(Material.AIR);
         }
         RunUtils.taskTimer(() -> {
-            blocksPlaced.keySet().stream().filter(Objects::isNull).forEach(blocksPlaced::remove);
             blocksPlaced.keySet().stream()
                     .filter(key ->
                             System.currentTimeMillis() - blocksPlaced.get(key) > TimeUnit.SECONDS.toMillis(10))
@@ -59,11 +59,11 @@ public class ScaffoldListeners implements Listener {
 
     @EventHandler
     public void onEvent(PlayerMoveEvent event) {
-        BoundingBox playerBox = new BoundingBox(event.getTo().toVector(), event.getTo().toVector())
-                .grow(0.3f, 0, 0.3f)
-                .add(0,0,0,0,1.8f,0);
+        SimpleCollisionBox playerBox = new SimpleCollisionBox(event.getTo().toVector(), event.getTo().toVector())
+                .expand(0.3, 0, 0.3)
+                .expandMax(0,1.8f,0);
 
-        if(playerBox.intersectsWithBox(placeArea)) {
+        if(playerBox.isCollided(placeArea)) {
             if(!playerInventory.containsKey(event.getPlayer().getUniqueId())) {
                 playerInventory.put(event.getPlayer().getUniqueId(), event.getPlayer().getInventory().getContents());
 
