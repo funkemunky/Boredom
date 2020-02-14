@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -37,10 +38,11 @@ public class ScaffoldListeners implements Listener {
 
             block.setType(Material.AIR);
         }
+        long time = TimeUnit.SECONDS.toMillis(10);
         RunUtils.taskTimer(() -> {
+            long timeStamp = System.currentTimeMillis();
             blocksPlaced.keySet().stream()
-                    .filter(key ->
-                            System.currentTimeMillis() - blocksPlaced.get(key) > TimeUnit.SECONDS.toMillis(10))
+                    .filter(key -> timeStamp - blocksPlaced.get(key) > time)
                     .forEach(key -> {
                         key.setType(Material.AIR);
                         blocksPlaced.remove(key);
@@ -77,7 +79,7 @@ public class ScaffoldListeners implements Listener {
         }
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onDisable(PluginDisableEvent event) {
         if(event.getPlugin().equals(TestCore.INSTANCE)) {
             blocksPlaced.keySet().forEach(block -> block.setType(Material.AIR));

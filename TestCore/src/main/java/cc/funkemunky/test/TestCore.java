@@ -2,13 +2,15 @@ package cc.funkemunky.test;
 
 import cc.funkemunky.api.Atlas;
 import cc.funkemunky.api.bungee.BungeeAPI;
+import cc.funkemunky.api.reflections.impl.MinecraftReflection;
 import cc.funkemunky.api.utils.Color;
 import cc.funkemunky.api.utils.MathUtils;
+import cc.funkemunky.api.utils.MiscUtils;
+import cc.funkemunky.api.utils.RunUtils;
+import cc.funkemunky.api.utils.math.RollingAverageDouble;
 import cc.funkemunky.test.listeners.CheatListeners;
-import cc.funkemunky.test.listeners.JoinListeners;
 import cc.funkemunky.test.listeners.ScaffoldListeners;
 import cc.funkemunky.test.user.User;
-import cc.funkemunky.test.user.Violation;
 import cc.funkemunky.test.utils.ConfigSettings;
 import me.tigerhix.lib.scoreboard.ScoreboardLib;
 import me.tigerhix.lib.scoreboard.common.EntryBuilder;
@@ -17,6 +19,7 @@ import me.tigerhix.lib.scoreboard.type.Entry;
 import me.tigerhix.lib.scoreboard.type.Scoreboard;
 import me.tigerhix.lib.scoreboard.type.ScoreboardHandler;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.Plugin;
@@ -30,12 +33,16 @@ public class TestCore extends JavaPlugin {
     public static TestCore INSTANCE;
     public boolean kauriEnabled;
     public Plugin kauri;
+    private long lastTick;
+    private double tps;
+    public RollingAverageDouble tpsAvg = new RollingAverageDouble(20, 0);
 
     public void onEnable() {
         INSTANCE = this;
-
+        MiscUtils.printToConsole("Loading TestCore v" + getDescription().getVersion() + "...");
         if(kauriEnabled = (kauri = Bukkit.getPluginManager().getPlugin("Kauri")) != null
                 && (kauriEnabled = Bukkit.getPluginManager().isPluginEnabled("Kauri"))) {
+            MiscUtils.printToConsole("Kauri enabled! Loading Kauri Test server specific things...");
             Atlas.getInstance().getEventManager().registerListeners(new CheatListeners(), this);
             ScoreboardLib.setPluginInstance(this);
             for(Player player : Bukkit.getOnlinePlayers()) {
@@ -43,10 +50,10 @@ public class TestCore extends JavaPlugin {
                 scoreboard.activate();
                 scoreboardMap.put(player.getUniqueId(), scoreboard);
             }
-            Bukkit.getPluginManager().registerEvents(new JoinListeners(), this);
         }
-        Bukkit.getPluginManager().registerEvents(new JoinListeners(), this);
+        MiscUtils.printToConsole("Running scanner...");
         Atlas.getInstance().initializeScanner(this, true, true);
+        MiscUtils.printToConsole("Running TPS task...");
     }
 
     public void onDisable() {
@@ -78,9 +85,9 @@ public class TestCore extends JavaPlugin {
                 try {
                     User user = User.getUser(player.getUniqueId());
                     EntryBuilder builder = new EntryBuilder()
-                            .blank()
-                            .next("&6&lKauri Versions")
-                            .next("&8» &eTest Version: &f" + kauri.getDescription().getVersion())
+                            .next(MiscUtils.line(ChatColor.RESET.toString() + Color.Dark_Gray).substring(0, 24))
+                            .next("&6&lYour Information")
+                            .next("&8» &ePing&7: &f" + MinecraftReflection.getPing(player))
                             .blank()
                             .next("&6&lViolations");
                     if(user.violations.size() == 0) {
@@ -99,10 +106,7 @@ public class TestCore extends JavaPlugin {
                         }
                     }
                     return builder
-                            .blank()
-                            .next("&6&lPurchase Kauri")
-                            .next(Color.White + "https://funkemunky.cc/shop")
-                            .blank().build();
+                            .next(MiscUtils.line(Color.Dark_Gray).substring(0, 22)).build();
                 } catch(NullPointerException e) {
                     e.printStackTrace();
                 }
