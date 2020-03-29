@@ -50,9 +50,10 @@ public class ScaffoldListeners implements Listener {
         }, 100L, 40L);
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOWEST)
     public void onEvent(BlockPlaceEvent event) {
         if(event.getBlockPlaced() != null && event.getBlockPlaced().getType().equals(Material.BRICK)) {
+            if(event.isCancelled()) event.setCancelled(false);
             event.getPlayer().getItemInHand().setAmount(5);
             event.getPlayer().updateInventory();
             blocksPlaced.put(event.getBlockPlaced(), System.currentTimeMillis());

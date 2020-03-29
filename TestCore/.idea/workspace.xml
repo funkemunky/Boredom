@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d37e0618-8ace-45eb-a570-4462d6db631d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/commands/LagCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/commands/UnloadChunk.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/handlers/SpeedTestHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/handlers/TaskHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/handlers/TestResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/listeners/ScaffoldListeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/listeners/ScaffoldListeners.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +30,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="workOffline" value="true" />
+      </MavenGeneralSettings>
+    </option>
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="importAutomatically" value="true" />
@@ -118,6 +127,10 @@
       <workItem from="1581616461570" duration="752000" />
       <workItem from="1583685976109" duration="1353000" />
       <workItem from="1583846172787" duration="3622000" />
+      <workItem from="1584550274929" duration="3525000" />
+      <workItem from="1585242694404" duration="395000" />
+      <workItem from="1585320490955" duration="625000" />
+      <workItem from="1585499588807" duration="4208000" />
     </task>
     <servers />
   </component>
