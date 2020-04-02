@@ -30,7 +30,7 @@ public class SpeedTestHandler implements Listener {
     public static SpeedTestHandler INSTANCE;
 
     private Map<UUID, TestResult> testResultsMap = new HashMap<>();
-    private static double setRatio = 0.00674;
+    private static double setRatio = 6.66;
 
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
@@ -81,8 +81,8 @@ public class SpeedTestHandler implements Listener {
             double distance = event.getPlayer().getLocation().toVector().setY(0)
                     .distance(result.startLoc.toVector().setY(0));
             event.getPlayer().teleport(result.previousLoc);
-            double moveRatio = distance / delta;
-            double vanillaRatio = moveRatio / setRatio;
+            double blocksPerSecond = distance / (delta / 1000D);
+            double vanillaRatio = blocksPerSecond / setRatio;
             double pct = vanillaRatio * 100;
 
             event.getPlayer().sendMessage(Color.translate("&7Completed speed test in &f"
@@ -90,9 +90,10 @@ public class SpeedTestHandler implements Listener {
                     + MathUtils.round(distance, 1) + " blocks &7&o(&f&o%v blocks per seconds&7&o)."
                     .replace("%v", String.valueOf(MathUtils
                             .round(distance / (delta / 1000D), 2)))));
-            double pctDelta = 100 - pct;
-            event.getPlayer().sendMessage(Color.translate("&7Your speed is " + (Math.abs(pctDelta) < 1.2
-                    ? "the same as vanilla" : (pctDelta < 0 ? "slower than vanilla" : "faster than vanilla" + " &7(&f" + MathUtils.round(pctDelta, 1) + "%&7)"))));
+            double pctDelta = pct - 100;
+            event.getPlayer().sendMessage(Color.translate("&7Your speed is " + (Math.abs(pctDelta) < 0.8
+                    ? "the same as vanilla" : (pctDelta < 0 ? "slower than vanilla" : "faster than vanilla" + " &7(&f"
+                    + MathUtils.round(pctDelta, 1) + "%&7)"))));
             testResultsMap.remove(event.getPlayer().getUniqueId());
         }
     }
