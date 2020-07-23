@@ -8,6 +8,7 @@ import cc.funkemunky.api.utils.MathUtils;
 import cc.funkemunky.api.utils.MiscUtils;
 import cc.funkemunky.api.utils.RunUtils;
 import cc.funkemunky.api.utils.math.RollingAverageDouble;
+import cc.funkemunky.test.commands.ToggleScoreboard;
 import cc.funkemunky.test.listeners.CheatListeners;
 import cc.funkemunky.test.listeners.ScaffoldListeners;
 import cc.funkemunky.test.user.User;
@@ -15,6 +16,7 @@ import cc.funkemunky.test.utils.ConfigSettings;
 import me.tigerhix.lib.scoreboard.ScoreboardLib;
 import me.tigerhix.lib.scoreboard.common.EntryBuilder;
 import me.tigerhix.lib.scoreboard.common.animate.HighlightedString;
+import me.tigerhix.lib.scoreboard.common.animate.ScrollableString;
 import me.tigerhix.lib.scoreboard.type.Entry;
 import me.tigerhix.lib.scoreboard.type.Scoreboard;
 import me.tigerhix.lib.scoreboard.type.ScoreboardHandler;
@@ -73,8 +75,11 @@ public class TestCore extends JavaPlugin {
     public Scoreboard getScoreboard(Player player) {
         Scoreboard board = ScoreboardLib.createScoreboard(player).setHandler(new ScoreboardHandler() {
 
-            private HighlightedString testServer = new HighlightedString("Kauri Test Server", "&f&l", "&7&l");
-
+            private HighlightedString testServer = new HighlightedString(ToggleScoreboard.devServer
+                    ? "Kauri Dev Server" : "Kauri Test Server", "&f&l", "&7&l");
+            private ScrollableString devServer = new ScrollableString("This is a development server. " +
+                    "If you want to test a stable version, view stable IPs with /test.",
+                    24, 2);
             @Override
             public String getTitle(Player player) {
                 return testServer.next();
@@ -85,7 +90,7 @@ public class TestCore extends JavaPlugin {
                 try {
                     User user = User.getUser(player.getUniqueId());
                     EntryBuilder builder = new EntryBuilder()
-                            .next(MiscUtils.line(ChatColor.RESET.toString() + Color.Dark_Gray).substring(0, 24))
+                            .next(MiscUtils.line(ChatColor.RESET.toString() + Color.Dark_Gray).substring(0, 30))
                             .next("&6&lYour Information")
                             .next("&8» &ePing&7: &f" + MinecraftReflection.getPing(player))
                             .blank()
@@ -105,8 +110,13 @@ public class TestCore extends JavaPlugin {
                             builder.next("&7&o*More Violations*");
                         }
                     }
+
+                    if(ToggleScoreboard.devServer) {
+                        builder.blank();
+                        builder.next(devServer.next());
+                    }
                     return builder
-                            .next(MiscUtils.line(Color.Dark_Gray).substring(0, 22)).build();
+                            .next(MiscUtils.line(Color.Dark_Gray).substring(0, 28)).build();
                 } catch(NullPointerException e) {
                     e.printStackTrace();
                 }

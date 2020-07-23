@@ -3,12 +3,16 @@ package cc.funkemunky.test.commands;
 import cc.funkemunky.api.commands.ancmd.Command;
 import cc.funkemunky.api.commands.ancmd.CommandAdapter;
 import cc.funkemunky.api.utils.Color;
+import cc.funkemunky.api.utils.ConfigSetting;
 import cc.funkemunky.api.utils.Init;
 import cc.funkemunky.test.TestCore;
 import me.tigerhix.lib.scoreboard.type.Scoreboard;
 
 @Init(commands = true)
 public class ToggleScoreboard {
+
+    @ConfigSetting(name = "devServer")
+    public static boolean devServer = true;
 
     @Command(name = "togglescoreboard", description = "Toggle the scoreboard on or off.",
             playerOnly = true, aliases = {"ts", "t.scoreboard", "tscoreboard", "t.s"})

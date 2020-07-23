@@ -1,7 +1,6 @@
 package cc.funkemunky.test.user;
 
 import cc.funkemunky.api.utils.math.RollingAverageDouble;
-import javafx.collections.transformation.SortedList;
 import lombok.RequiredArgsConstructor;
 
 import java.util.*;

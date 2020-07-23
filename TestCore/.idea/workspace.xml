@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d37e0618-8ace-45eb-a570-4462d6db631d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/listeners/StrikePracticePlugin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/commands/InformationCommands.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/TestCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/TestCore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/commands/ToggleScoreboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/commands/ToggleScoreboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/user/User.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,11 +35,6 @@
         <option name="workOffline" value="true" />
       </MavenGeneralSettings>
     </option>
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
   </component>
   <component name="ProjectConfigurationFiles">
     <option name="files">
@@ -52,6 +46,10 @@
   </component>
   <component name="ProjectId" id="1Pb4CRM8rzCGQRXmD88GKAbvWIG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -72,18 +70,6 @@
       <command value="mvn clean install" />
       <command value="mvn -T3 clean install" />
       <command value="mvn -T4 clean install" />
-    </option>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
     </option>
   </component>
   <component name="SvnConfiguration">
@@ -135,24 +121,50 @@
       <workItem from="1585499588807" duration="4208000" />
       <workItem from="1588078887741" duration="1060000" />
       <workItem from="1588863650836" duration="2068000" />
+      <workItem from="1594385159204" duration="3020000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1594390983032">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594390983032" />
+    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1594390983032">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="281" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594390983032" />
+    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1594390983032">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="281" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594390983032" />
+    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1594390983032">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="281" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594390983032" />
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1594387080685">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594387080685" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1594386433701">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594386433701" />
   </component>
   <component name="mavenExecuteGoalHistory">
     <option value="$PROJECT_DIR$" />
