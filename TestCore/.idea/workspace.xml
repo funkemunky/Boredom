@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d37e0618-8ace-45eb-a570-4462d6db631d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/commands/InformationCommands.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/TestCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/TestCore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/commands/ToggleScoreboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/commands/ToggleScoreboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/user/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +118,8 @@
       <workItem from="1588078887741" duration="1060000" />
       <workItem from="1588863650836" duration="2068000" />
       <workItem from="1594385159204" duration="3020000" />
+      <workItem from="1596918906842" duration="608000" />
+      <workItem from="1597254922446" duration="8000" />
     </task>
     <servers />
   </component>

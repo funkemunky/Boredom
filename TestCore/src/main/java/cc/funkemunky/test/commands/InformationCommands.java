@@ -2,7 +2,6 @@ package cc.funkemunky.test.commands;
 
 import cc.funkemunky.api.commands.ancmd.Command;
 import cc.funkemunky.api.commands.ancmd.CommandAdapter;
-import cc.funkemunky.api.utils.Color;
 import cc.funkemunky.api.utils.ConfigSetting;
 import cc.funkemunky.api.utils.Init;
 import net.md_5.bungee.api.ChatColor;

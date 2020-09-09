@@ -7,10 +7,6 @@ import cc.funkemunky.api.utils.Color;
 import cc.funkemunky.api.utils.Init;
 import cc.funkemunky.api.utils.RunUtils;
 import cc.funkemunky.test.TestCore;
-import dev.brighten.db.utils.MiscUtils;
-import dev.brighten.db.utils.security.hash.Hash;
-import dev.brighten.db.utils.security.hash.HashType;
-import dev.brighten.db.utils.security.hash.impl.SHA2;
 import org.bukkit.scheduler.BukkitTask;
 
 import java.nio.charset.StandardCharsets;

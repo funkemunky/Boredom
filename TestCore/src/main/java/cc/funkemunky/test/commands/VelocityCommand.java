@@ -4,7 +4,6 @@ import cc.funkemunky.api.commands.ancmd.Command;
 import cc.funkemunky.api.commands.ancmd.CommandAdapter;
 import cc.funkemunky.api.utils.Color;
 import cc.funkemunky.api.utils.Init;
-import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
 @Init(commands = true)

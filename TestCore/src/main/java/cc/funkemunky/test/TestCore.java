@@ -6,7 +6,6 @@ import cc.funkemunky.api.reflections.impl.MinecraftReflection;
 import cc.funkemunky.api.utils.Color;
 import cc.funkemunky.api.utils.MathUtils;
 import cc.funkemunky.api.utils.MiscUtils;
-import cc.funkemunky.api.utils.RunUtils;
 import cc.funkemunky.api.utils.math.RollingAverageDouble;
 import cc.funkemunky.test.commands.ToggleScoreboard;
 import cc.funkemunky.test.listeners.CheatListeners;
@@ -42,8 +41,8 @@ public class TestCore extends JavaPlugin {
     public void onEnable() {
         INSTANCE = this;
         MiscUtils.printToConsole("Loading TestCore v" + getDescription().getVersion() + "...");
-        if(kauriEnabled = (kauri = Bukkit.getPluginManager().getPlugin("Kauri")) != null
-                && (kauriEnabled = Bukkit.getPluginManager().isPluginEnabled("Kauri"))) {
+        if(kauriEnabled = (kauri = Bukkit.getPluginManager().getPlugin(ToggleScoreboard.devServer ? "Kauri" : "KauriLoader")) != null
+                && (kauriEnabled = Bukkit.getPluginManager().isPluginEnabled(ToggleScoreboard.devServer ? "Kauri" : "KauriLoader"))) {
             MiscUtils.printToConsole("Kauri enabled! Loading Kauri Test server specific things...");
             Atlas.getInstance().getEventManager().registerListeners(new CheatListeners(), this);
             ScoreboardLib.setPluginInstance(this);
@@ -67,8 +66,7 @@ public class TestCore extends JavaPlugin {
         });
         HandlerList.unregisterAll(this);
         Atlas.getInstance().getEventManager().unregisterAll(this);
-        Atlas.getInstance().getCommandManager().unregisterCommand("renameitem");
-        Atlas.getInstance().getCommandManager().unregisterCommand("buykauri");
+        Atlas.getInstance().getCommandManager(this).unregisterCommands();
         Bukkit.getScheduler().cancelTasks(this);
     }
 

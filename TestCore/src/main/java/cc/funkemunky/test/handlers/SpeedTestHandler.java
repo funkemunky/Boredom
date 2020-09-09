@@ -1,9 +1,9 @@
 package cc.funkemunky.test.handlers;
 
-import cc.funkemunky.api.events.AtlasListener;
-import cc.funkemunky.api.events.Listen;
-import cc.funkemunky.api.utils.*;
-import cc.funkemunky.test.TestCore;
+import cc.funkemunky.api.utils.Color;
+import cc.funkemunky.api.utils.Init;
+import cc.funkemunky.api.utils.Instance;
+import cc.funkemunky.api.utils.MathUtils;
 import lombok.val;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -21,7 +21,6 @@ import org.bukkit.potion.PotionEffect;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 @Init(commands = true)
 public class SpeedTestHandler implements Listener {

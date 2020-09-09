@@ -5,7 +5,6 @@ import cc.funkemunky.api.utils.RunUtils;
 import cc.funkemunky.test.commands.LockdownMode;
 import cc.funkemunky.test.user.User;
 import org.bukkit.Bukkit;
-import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;

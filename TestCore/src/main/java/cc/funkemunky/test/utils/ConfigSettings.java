@@ -3,9 +3,6 @@ package cc.funkemunky.test.utils;
 import cc.funkemunky.api.utils.ConfigSetting;
 import cc.funkemunky.api.utils.Init;
 
-import java.util.Arrays;
-import java.util.List;
-
 @Init
 public class ConfigSettings {
 

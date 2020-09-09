@@ -3,7 +3,9 @@ package cc.funkemunky.test.user;
 import cc.funkemunky.api.utils.math.RollingAverageDouble;
 import lombok.RequiredArgsConstructor;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 public class User {

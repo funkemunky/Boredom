@@ -3,7 +3,6 @@ package cc.funkemunky.test.listeners;
 import cc.funkemunky.api.events.AtlasListener;
 import cc.funkemunky.api.events.Listen;
 import cc.funkemunky.test.user.User;
-import cc.funkemunky.test.user.Violation;
 import dev.brighten.api.listener.KauriFlagEvent;
 
 public class CheatListeners implements AtlasListener {
