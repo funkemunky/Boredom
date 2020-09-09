@@ -41,6 +41,8 @@ public class TestCore extends JavaPlugin {
     public void onEnable() {
         INSTANCE = this;
         MiscUtils.printToConsole("Loading TestCore v" + getDescription().getVersion() + "...");
+        MiscUtils.printToConsole("Running scanner...");
+        Atlas.getInstance().initializeScanner(this, true, true);
         if(kauriEnabled = (kauri = Bukkit.getPluginManager().getPlugin(ToggleScoreboard.devServer ? "Kauri" : "KauriLoader")) != null
                 && (kauriEnabled = Bukkit.getPluginManager().isPluginEnabled(ToggleScoreboard.devServer ? "Kauri" : "KauriLoader"))) {
             MiscUtils.printToConsole("Kauri enabled! Loading Kauri Test server specific things...");
@@ -52,8 +54,6 @@ public class TestCore extends JavaPlugin {
                 scoreboardMap.put(player.getUniqueId(), scoreboard);
             }
         }
-        MiscUtils.printToConsole("Running scanner...");
-        Atlas.getInstance().initializeScanner(this, true, true);
         MiscUtils.printToConsole("Running TPS task...");
     }
 
