@@ -11,6 +11,7 @@ import ga.strikepractice.events.BotDuelEndEvent;
 import ga.strikepractice.events.BotDuelStartEvent;
 import ga.strikepractice.events.DuelEndEvent;
 import ga.strikepractice.events.DuelStartEvent;
+import net.citizensnpcs.npc.CitizensNPC;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftHumanEntity;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.event.EventHandler;
@@ -30,7 +31,8 @@ public class StrikePracticePlugin implements Listener {
         new BukkitRunnable() {
             public void run() {
                 ((CraftPlayer) e.getPlayer()).getHandle().setKnockback(getProfileByKit(e.getFight().getKit()));
-                ((CraftHumanEntity)e.getBot()).getHandle().setKnockback(getProfileByKit(e.getFight().getKit()));
+                ((CraftHumanEntity)e.getBot().getEntity())
+                        .getHandle().setKnockback(getProfileByKit(e.getFight().getKit()));
             }
         }.runTaskLater(TestCore.INSTANCE, 2L);
     }
@@ -43,7 +45,8 @@ public class StrikePracticePlugin implements Listener {
             public void run() {
                 ((CraftPlayer) e.getPlayer()).getHandle().setKnockback(KnockbackModule.getProfile());
                 if(e.getBot() != null && e.getBot().getEntity() != null) {
-                    ((CraftHumanEntity)e.getBot().getEntity()).getHandle().setKnockback(KnockbackModule.getProfile());
+                    ((CraftHumanEntity)e.getBot().getEntity())
+                            .getHandle().setKnockback(KnockbackModule.getProfile());
                 }
             }
         }.runTaskLater(TestCore.INSTANCE, 2L);
