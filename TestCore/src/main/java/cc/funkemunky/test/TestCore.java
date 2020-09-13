@@ -10,8 +10,11 @@ import cc.funkemunky.api.utils.math.RollingAverageDouble;
 import cc.funkemunky.test.commands.ToggleScoreboard;
 import cc.funkemunky.test.listeners.CheatListeners;
 import cc.funkemunky.test.listeners.ScaffoldListeners;
+import cc.funkemunky.test.user.Settings;
 import cc.funkemunky.test.user.User;
 import cc.funkemunky.test.utils.ConfigSettings;
+import dev.brighten.db.db.Database;
+import dev.brighten.db.db.FlatfileDatabase;
 import me.tigerhix.lib.scoreboard.ScoreboardLib;
 import me.tigerhix.lib.scoreboard.common.EntryBuilder;
 import me.tigerhix.lib.scoreboard.common.animate.HighlightedString;
@@ -36,6 +39,7 @@ public class TestCore extends JavaPlugin {
     public Plugin kauri;
     private long lastTick;
     private double tps;
+    public Database database;
     public RollingAverageDouble tpsAvg = new RollingAverageDouble(20, 0);
 
     public void onEnable() {
@@ -54,7 +58,11 @@ public class TestCore extends JavaPlugin {
                 scoreboardMap.put(player.getUniqueId(), scoreboard);
             }
         }
-        MiscUtils.printToConsole("Running TPS task...");
+        database = new FlatfileDatabase("testcoreInfo");
+        database.loadMappings();
+        MiscUtils.printToConsole("Setting times of players based on settings...");
+        Bukkit.getOnlinePlayers().forEach(player ->
+                player.setPlayerTime(Settings.timeOfDay.getValue(player).timeMillis, false));
     }
 
     public void onDisable() {

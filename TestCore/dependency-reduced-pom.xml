@@ -40,7 +40,7 @@
   <repositories>
     <repository>
       <id>funkemunky-releases</id>
-      <url>http://nexus.funkemunky.cc/content/repositories/releases/</url>
+      <url>https://nexus.funkemunky.cc/content/repositories/releases/</url>
     </repository>
   </repositories>
   <dependencies>
@@ -51,9 +51,9 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>dev.brighten.kauri</groupId>
+      <groupId>dev.brighten.anticheat</groupId>
       <artifactId>API</artifactId>
-      <version>2.2</version>
+      <version>2.10.0</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -77,7 +77,7 @@
     <dependency>
       <groupId>cc.funkemunky.utils</groupId>
       <artifactId>Atlas</artifactId>
-      <version>1.8.4</version>
+      <version>1.9</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
