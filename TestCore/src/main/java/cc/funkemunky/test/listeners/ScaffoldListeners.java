@@ -86,19 +86,12 @@ public class ScaffoldListeners implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST)
-    public void onDisable(PluginDisableEvent event) {
-        if(event.getPlugin().equals(TestCore.INSTANCE)) {
-            blocksPlaced.keySet().forEach(block -> block.setType(Material.AIR));
-            blocksPlaced.clear();
-        }
-    }
-
     public static void reset() {
-        blocksPlaced.keySet().forEach(block -> {
+        for (Block block : Helper.getBlocksNearby2(world, placeArea, Materials.SOLID)) {
+            if(!block.getType().equals(Material.BRICK)) continue;
             block.setType(Material.AIR);
-            blocksPlaced.remove(block);
-        });
+        }
+        blocksPlaced.clear();
         playerInventory.keySet().stream()
                 .map(Bukkit::getPlayer)
                 .filter(Objects::nonNull)

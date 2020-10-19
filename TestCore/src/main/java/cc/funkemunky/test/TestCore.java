@@ -50,7 +50,7 @@ public class TestCore extends JavaPlugin {
         if(kauriEnabled = (kauri = Bukkit.getPluginManager().getPlugin(ToggleScoreboard.devServer ? "Kauri" : "KauriLoader")) != null
                 && (kauriEnabled = Bukkit.getPluginManager().isPluginEnabled(ToggleScoreboard.devServer ? "Kauri" : "KauriLoader"))) {
             MiscUtils.printToConsole("Kauri enabled! Loading Kauri Test server specific things...");
-            Atlas.getInstance().getEventManager().registerListeners(new CheatListeners(), this);
+            Bukkit.getPluginManager().registerEvents(new CheatListeners(), this);
             ScoreboardLib.setPluginInstance(this);
             for(Player player : Bukkit.getOnlinePlayers()) {
                 Scoreboard scoreboard = getScoreboard(player);

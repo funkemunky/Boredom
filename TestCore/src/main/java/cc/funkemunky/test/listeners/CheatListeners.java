@@ -9,11 +9,13 @@ import dev.brighten.api.listener.KauriFlagEvent;
 import dev.brighten.api.listener.KauriPunishEvent;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.github.paperspigot.Title;
 
-public class CheatListeners implements AtlasListener {
+public class CheatListeners implements Listener {
 
-    @Listen
+    @EventHandler
     public void onCheat(KauriFlagEvent event) {
         User user = User.getUser(event.player.getUniqueId());
 
@@ -26,7 +28,7 @@ public class CheatListeners implements AtlasListener {
 
     private static TextComponent kickTitle;
 
-    @Listen
+    @EventHandler
     public void onEvent(KauriPunishEvent event) {
         if(!User.getUser(event.getPlayer().getUniqueId()).isAllowingKick()) {
             TextComponent comp = new TextComponent(kickTitle);
@@ -37,7 +39,7 @@ public class CheatListeners implements AtlasListener {
         }
     }
 
-    @Listen
+    @EventHandler
     public void onEvent(KauriCancelEvent event) {
         event.setCancelled(!User.getUser(event.getPlayer().getUniqueId()).isAllowingCancel());
     }
