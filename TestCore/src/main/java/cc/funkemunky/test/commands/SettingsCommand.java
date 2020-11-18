@@ -6,6 +6,8 @@ import cc.funkemunky.api.utils.Init;
 import cc.funkemunky.api.utils.menu.preset.SettingsMenu;
 import cc.funkemunky.api.utils.menu.preset.button.SettingButton;
 import cc.funkemunky.test.user.Settings;
+import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 
 @Init(commands = true)
 public class SettingsCommand {
@@ -21,5 +23,7 @@ public class SettingsCommand {
                         Settings.timeOfDay));
 
         menu.showMenu(cmd.getPlayer());
+        cmd.getPlayer().sendMessage(new ComponentBuilder("Opened the test settings menu.")
+                .color(ChatColor.GREEN).create());
     }
 }

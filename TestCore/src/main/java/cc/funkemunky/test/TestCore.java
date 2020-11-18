@@ -33,7 +33,7 @@ import java.util.*;
 
 public class TestCore extends JavaPlugin {
 
-    public Map<UUID, Scoreboard> scoreboardMap = new HashMap<>();
+    public final Map<UUID, Scoreboard> scoreboardMap = Collections.synchronizedMap(new HashMap<>());
     public static TestCore INSTANCE;
     public boolean kauriEnabled;
     public Plugin kauri;
@@ -68,10 +68,12 @@ public class TestCore extends JavaPlugin {
     public void onDisable() {
         ScaffoldListeners.reset();
         runBungeeStuff();
-        scoreboardMap.forEach((uuid, board) -> {
-            board.deactivate();
-            scoreboardMap.remove(uuid);
-        });
+        synchronized (scoreboardMap) {
+            scoreboardMap.forEach((uuid, board) -> {
+                board.deactivate();
+                scoreboardMap.remove(uuid);
+            });
+        }
         HandlerList.unregisterAll(this);
         Atlas.getInstance().getEventManager().unregisterAll(this);
         Atlas.getInstance().getCommandManager(this).unregisterCommands();

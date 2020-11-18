@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,10 +19,11 @@ public class User {
     private static Map<UUID, User> users = new HashMap<>();
     public final UUID uuid;
     public Map<String, Float> violations = new HashMap<>();
-    public long lastClick;
+    public long lastClick, inventoryStart;
     public RollingAverageDouble cpsAvg = new RollingAverageDouble(10, 0);
     private boolean cancelling, allowingKick;
     private TickTimer lastDbCheck = new TickTimer(40);
+    public ItemStack[] previousInventoryContents;
 
     public static User getUser(UUID uuid) {
         return users.computeIfAbsent(uuid, key -> {
