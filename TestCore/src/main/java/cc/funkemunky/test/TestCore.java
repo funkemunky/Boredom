@@ -40,7 +40,6 @@ public class TestCore extends JavaPlugin {
     private long lastTick;
     private double tps;
     public Database database;
-    public RollingAverageDouble tpsAvg = new RollingAverageDouble(20, 0);
 
     public void onEnable() {
         INSTANCE = this;
@@ -50,7 +49,7 @@ public class TestCore extends JavaPlugin {
         if(kauriEnabled = (kauri = Bukkit.getPluginManager().getPlugin(ToggleScoreboard.devServer ? "Kauri" : "KauriLoader")) != null
                 && (kauriEnabled = Bukkit.getPluginManager().isPluginEnabled(ToggleScoreboard.devServer ? "Kauri" : "KauriLoader"))) {
             MiscUtils.printToConsole("Kauri enabled! Loading Kauri Test server specific things...");
-            Bukkit.getPluginManager().registerEvents(new CheatListeners(), this);
+            Atlas.getInstance().getEventManager().registerListeners(new CheatListeners(), this);
             ScoreboardLib.setPluginInstance(this);
             for(Player player : Bukkit.getOnlinePlayers()) {
                 Scoreboard scoreboard = getScoreboard(player);
@@ -68,12 +67,10 @@ public class TestCore extends JavaPlugin {
     public void onDisable() {
         ScaffoldListeners.reset();
         runBungeeStuff();
-        synchronized (scoreboardMap) {
-            scoreboardMap.forEach((uuid, board) -> {
-                board.deactivate();
-                scoreboardMap.remove(uuid);
-            });
-        }
+        scoreboardMap.forEach((uuid, board) -> {
+            board.deactivate();
+        });
+        scoreboardMap.clear();
         HandlerList.unregisterAll(this);
         Atlas.getInstance().getEventManager().unregisterAll(this);
         Atlas.getInstance().getCommandManager(this).unregisterCommands();

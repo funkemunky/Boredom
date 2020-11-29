@@ -13,9 +13,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.github.paperspigot.Title;
 
-public class CheatListeners implements Listener {
+public class CheatListeners implements AtlasListener {
 
-    @EventHandler
+    @Listen
     public void onCheat(KauriFlagEvent event) {
         User user = User.getUser(event.player.getUniqueId());
 
@@ -28,7 +28,7 @@ public class CheatListeners implements Listener {
 
     private static TextComponent kickTitle;
 
-    @EventHandler
+    @Listen
     public void onEvent(KauriPunishEvent event) {
         if(!User.getUser(event.getPlayer().getUniqueId()).isAllowingKick()) {
             TextComponent comp = new TextComponent(kickTitle);
@@ -39,7 +39,7 @@ public class CheatListeners implements Listener {
         }
     }
 
-    @EventHandler
+    @Listen
     public void onEvent(KauriCancelEvent event) {
         event.setCancelled(!User.getUser(event.getPlayer().getUniqueId()).isAllowingCancel());
     }

@@ -6,10 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="d37e0618-8ace-45eb-a570-4462d6db631d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/TestCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/TestCore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/commands/SettingsCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/commands/SettingsCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/listeners/ChestStealListeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/listeners/ChestStealListeners.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/commands/RenameItemCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/commands/RenameItemCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/listeners/CheatListeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/listeners/CheatListeners.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +23,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -76,6 +78,21 @@
       <command value="mvn -T4 clean install" />
       <command value="mvn clean install" />
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -145,6 +162,8 @@
       <workItem from="1604765237990" duration="2888000" />
       <workItem from="1604942216517" duration="40000" />
       <workItem from="1605024763072" duration="1937000" />
+      <workItem from="1606509299247" duration="596000" />
+      <workItem from="1606670861422" duration="3978000" />
     </task>
     <servers />
   </component>
@@ -164,26 +183,30 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1606670954793">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606670954793" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1600029765316">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1600029765316" />
-    <state width="1877" height="269" key="GridCell.Tab.0.bottom" timestamp="1605034672036">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1606674829319">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="269" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605034672036" />
-    <state width="1877" height="269" key="GridCell.Tab.0.center" timestamp="1605034672036">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606674829319" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1606674829319">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="269" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605034672036" />
-    <state width="1877" height="269" key="GridCell.Tab.0.left" timestamp="1605034672036">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606674829319" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1606674829319">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="269" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605034672036" />
-    <state width="1877" height="269" key="GridCell.Tab.0.right" timestamp="1605034672036">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606674829319" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1606674829319">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="269" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605034672036" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606674829319" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1604765245999">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -192,10 +215,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="667" y="253" width="585" height="534" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1599670838604" />
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1605027148113">
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1606674829294">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605027148113" />
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606674829294" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1604766586375">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
