@@ -21,7 +21,7 @@ public class User {
     public Map<String, Float> violations = new HashMap<>();
     public long lastClick, inventoryStart;
     public RollingAverageDouble cpsAvg = new RollingAverageDouble(10, 0);
-    private boolean cancelling, allowingKick;
+    private boolean cancelling, allowingKick, noDamage, noHunger;
     private TickTimer lastDbCheck = new TickTimer(40);
     public ItemStack[] previousInventoryContents;
 
@@ -40,10 +40,42 @@ public class User {
             if(player != null) {
                 this.cancelling = Settings.allowKauriCancel.getValue(player);
                 this.allowingKick = Settings.allowKauriKicking.getValue(player);
+                this.noDamage = Settings.noDamage.getValue(player);
+                this.noHunger = Settings.noHunger.getValue(player);
             }
             lastDbCheck.reset();
         }
         return this.cancelling;
+    }
+
+    public boolean isNoDamage() {
+        if(lastDbCheck.hasPassed()) {
+            Player player = Bukkit.getPlayer(uuid);
+
+            if(player != null) {
+                this.cancelling = Settings.allowKauriCancel.getValue(player);
+                this.allowingKick = Settings.allowKauriKicking.getValue(player);
+                this.noDamage = Settings.noDamage.getValue(player);
+                this.noHunger = Settings.noHunger.getValue(player);
+            }
+            lastDbCheck.reset();
+        }
+        return this.noDamage;
+    }
+
+    public boolean isNoHunger() {
+        if(lastDbCheck.hasPassed()) {
+            Player player = Bukkit.getPlayer(uuid);
+
+            if(player != null) {
+                this.cancelling = Settings.allowKauriCancel.getValue(player);
+                this.allowingKick = Settings.allowKauriKicking.getValue(player);
+                this.noDamage = Settings.noDamage.getValue(player);
+                this.noHunger = Settings.noHunger.getValue(player);
+            }
+            lastDbCheck.reset();
+        }
+        return this.noHunger;
     }
 
     public boolean isAllowingKick() {
@@ -53,6 +85,8 @@ public class User {
             if(player != null) {
                 this.cancelling = Settings.allowKauriCancel.getValue(player);
                 this.allowingKick = Settings.allowKauriKicking.getValue(player);
+                this.noDamage = Settings.noDamage.getValue(player);
+                this.noHunger = Settings.noHunger.getValue(player);
             }
             lastDbCheck.reset();
         }

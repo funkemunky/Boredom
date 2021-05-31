@@ -2,16 +2,22 @@ package cc.funkemunky.test.listeners;
 
 import cc.funkemunky.api.events.AtlasListener;
 import cc.funkemunky.api.events.Listen;
+import cc.funkemunky.api.utils.Color;
+import cc.funkemunky.api.utils.msg.ChatBuilder;
 import cc.funkemunky.test.user.Settings;
 import cc.funkemunky.test.user.User;
 import dev.brighten.api.listener.KauriCancelEvent;
 import dev.brighten.api.listener.KauriFlagEvent;
 import dev.brighten.api.listener.KauriPunishEvent;
 import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.github.paperspigot.Title;
+
+import java.awt.*;
 
 public class CheatListeners implements AtlasListener {
 
@@ -33,8 +39,10 @@ public class CheatListeners implements AtlasListener {
         if(!User.getUser(event.getPlayer().getUniqueId()).isAllowingKick()) {
             TextComponent comp = new TextComponent(kickTitle);
 
-            comp.addExtra(event.getCheck().getName());
-            event.getPlayer().sendTitle(new Title(comp));
+            final Title title = new Title(new BaseComponent[]{kickTitle},
+                    ChatBuilder.create().text(event.getCheck().getName()).color(Color.White).build(),
+                    3, 40, 3);
+            event.getPlayer().sendTitle(title);
             event.setCancelled(true);
         }
     }
@@ -45,7 +53,7 @@ public class CheatListeners implements AtlasListener {
     }
 
     static {
-        kickTitle = new TextComponent("Kauri kicked you for: ");
+        kickTitle = new TextComponent("Kauri kicked you for:");
         kickTitle.setColor(ChatColor.YELLOW);
     }
 }

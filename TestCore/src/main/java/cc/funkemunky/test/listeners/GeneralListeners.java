@@ -1,15 +1,22 @@
 package cc.funkemunky.test.listeners;
 
+import cc.funkemunky.api.utils.Color;
 import cc.funkemunky.api.utils.Init;
 import cc.funkemunky.api.utils.RunUtils;
+import cc.funkemunky.api.utils.msg.ChatBuilder;
 import cc.funkemunky.test.commands.LockdownMode;
 import cc.funkemunky.test.user.User;
+import ga.strikepractice.StrikePracticeAPI;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityTargetEvent;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.weather.WeatherChangeEvent;
@@ -36,6 +43,56 @@ public class GeneralListeners implements Listener {
         if(LockdownMode.lockdownMode && !LockdownMode.uuids.contains(event.getUniqueId())) {
             event.setLoginResult(AsyncPlayerPreLoginEvent.Result.KICK_BANNED);
             event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_BANNED, "gtfo");
+        }
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST) //So anything else can modify this if necessary.
+    public void onEvent(EntityDamageByEntityEvent event) {
+        if(event.getDamager() instanceof Player && event.getEntity() instanceof Player) {
+            Player attacker = (Player) event.getDamager();
+
+            if(StrikePracticeAPI.isInEvent(attacker) || StrikePracticeAPI.isInFight(attacker)) return;
+
+            User user = User.getUser(attacker.getUniqueId());
+
+            if(user == null) return;
+
+            if(user.isNoDamage()) {
+                event.setCancelled(true);
+                attacker.sendMessage(ChatBuilder
+                        .create("You cannot attack other players while your noDamage is set to true.")
+                        .color(Color.Red).build());
+            }
+        }
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST)  //So anything else can modify this if necessary.
+    public void onDamage(EntityDamageEvent event) {
+        if(event.getEntity() instanceof Player) {
+            Player attacker = (Player) event.getEntity();
+
+            if(StrikePracticeAPI.isInEvent(attacker) || StrikePracticeAPI.isInFight(attacker)) return;
+
+            User user = User.getUser(attacker.getUniqueId());
+
+            if(user == null) return;
+
+            if(user.isNoDamage()) event.setCancelled(true);
+        }
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST)  //So anything else can modify this if necessary.
+    public void onHunger(FoodLevelChangeEvent event) {
+        if(event.getEntity() instanceof Player) {
+            Player player = (Player) event.getEntity();
+
+            if(StrikePracticeAPI.isInEvent(player) || StrikePracticeAPI.isInFight(player)) return;
+
+            User user = User.getUser(player.getUniqueId());
+
+            if(user == null) return;
+
+            if(user.isNoHunger()) event.setCancelled(true);
         }
     }
 

@@ -19,6 +19,10 @@ public class SettingsCommand {
                         "&fThis will toggle Kauri flag setbacks.", Settings.allowKauriCancel),
                 new SettingButton(cmd.getPlayer(), "Punishments",
                         "&fThis will toggle Kauri punishments.", Settings.allowKauriKicking),
+                new SettingButton(cmd.getPlayer(), "No Hunger", "&fTurn off food and saturation loss.",
+                        Settings.noHunger),
+                new SettingButton(cmd.getPlayer(), "No Damage", "&fTurn off any kind of damage.",
+                        Settings.noDamage),
                 new SettingButton(cmd.getPlayer(), "Time of Day", "&fChange your personal time of day.",
                         Settings.timeOfDay));
 
