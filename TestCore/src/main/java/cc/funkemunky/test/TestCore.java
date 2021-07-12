@@ -90,11 +90,9 @@ public class TestCore extends JavaPlugin {
     public Scoreboard getScoreboard(Player player) {
         Scoreboard board = ScoreboardLib.createScoreboard(player).setHandler(new ScoreboardHandler() {
 
-            private HighlightedString testServer = new HighlightedString(ToggleScoreboard.devServer
+            private final HighlightedString testServer = new HighlightedString(ToggleScoreboard.devServer
                     ? "Kauri Dev Server" : "Kauri Test Server", "&f&l", "&7&l");
-            private ScrollableString devServer = new ScrollableString("This is a development server. " +
-                    "If you want to test a stable version, view stable IPs with /test.",
-                    24, 2);
+
             @Override
             public String getTitle(Player player) {
                 return testServer.next();
@@ -106,18 +104,19 @@ public class TestCore extends JavaPlugin {
                     User user = User.getUser(player.getUniqueId());
                     EntryBuilder builder = new EntryBuilder()
                             .next(MiscUtils.line(ChatColor.RESET.toString() + Color.Dark_Gray).substring(0, 30))
-                            .next("&6&lYour Information")
+                            .next("&6&lLag Information")
                             .next("&8» &ePing&7: &f" + MinecraftReflection.getPing(player))
+                            .next("&8» &eTPS&7: &f" + MathUtils.round(Bukkit.spigot().getTPS()[0], 2))
                             .blank()
                             .next("&6&lViolations");
                     if(user.violations.size() == 0) {
-                        builder.next(Color.White + "None");
+                        builder.next("&8» &fNone");
                     } else {
                         user.violations.keySet().stream()
                                 .sorted(Comparator.comparing(user.violations::get, Comparator.reverseOrder()))
                                 .limit(4).
                                 forEach(vl -> {
-                                    builder.next("&8- &f"
+                                    builder.next("&8» &f"
                                             + vl
                                             + " &7(&c" + MathUtils.round(user.violations.get(vl), 2) + "&7)");
                                 });
@@ -128,7 +127,8 @@ public class TestCore extends JavaPlugin {
 
                     if(ToggleScoreboard.devServer) {
                         builder.blank();
-                        builder.next(devServer.next());
+                        builder.next("&6&lCurrent Server");
+                        builder.next("&8» &f" + ConfigSettings.currentServerip);
                     }
                     return builder
                             .next(MiscUtils.line(Color.Dark_Gray).substring(0, 28)).build();
@@ -137,7 +137,7 @@ public class TestCore extends JavaPlugin {
                 }
                 return new EntryBuilder().blank().next("&cError. Check console").build();
             }
-        }).setUpdateInterval(2);
+        }).setUpdateInterval(4);
 
         scoreboardMap.put(player.getUniqueId(), board);
         return board;

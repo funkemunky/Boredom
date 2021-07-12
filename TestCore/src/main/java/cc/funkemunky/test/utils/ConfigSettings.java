@@ -18,6 +18,9 @@ public class ConfigSettings {
     @ConfigSetting(path = "bungee", name = "enabled")
     public static boolean bungeeEnabled = true;
 
+    @ConfigSetting(name = "currentServer")
+    public static String currentServerip = "dev.funkemunky.cc";
+
     @ConfigSetting(path = "bungee", name = "backupServer")
     public static String backupServer = "test";
 }
