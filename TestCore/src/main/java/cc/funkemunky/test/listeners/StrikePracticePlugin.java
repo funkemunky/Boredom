@@ -1,6 +1,7 @@
 package cc.funkemunky.test.listeners;
 
 import cc.funkemunky.api.utils.Color;
+import cc.funkemunky.api.utils.ConfigSetting;
 import cc.funkemunky.api.utils.Init;
 import cc.funkemunky.api.utils.MiscUtils;
 import cc.funkemunky.test.TestCore;
@@ -25,6 +26,9 @@ public class StrikePracticePlugin implements Listener {
         MiscUtils.printToConsole(Color.Green + "Setup hook into StrikePractice.");
     }
 
+    @ConfigSetting(name = "bot-kb-preset")
+    private static String botKnockback = "none";
+
     @EventHandler
     public void onStrike(BotDuelStartEvent event) {
         final BotDuelStartEvent e = event;
@@ -32,7 +36,9 @@ public class StrikePracticePlugin implements Listener {
             public void run() {
                 ((CraftPlayer) e.getPlayer()).getHandle().setKnockback(getProfileByKit(e.getFight().getKit()));
                 ((CraftHumanEntity)e.getBot().getEntity())
-                        .getHandle().setKnockback(getProfileByKit(e.getFight().getKit()));
+                        .getHandle().setKnockback(!botKnockback.equals("none")
+                        ? KnockbackModule.INSTANCE.profiles.getOrDefault(botKnockback,
+                        getProfileByKit(e.getFight().getKit())) :  getProfileByKit(e.getFight().getKit()));
             }
         }.runTaskLater(TestCore.INSTANCE, 2L);
     }

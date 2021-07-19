@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d37e0618-8ace-45eb-a570-4462d6db631d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/TestCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/TestCore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/utils/ConfigSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cc/funkemunky/test/utils/ConfigSettings.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,19 +78,6 @@
       <command value="mvn clean install" />
       <command value="mvn -T4 clean install" />
     </option>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -167,7 +152,7 @@
       <workItem from="1622476972659" duration="3361000" />
       <workItem from="1622552207976" duration="598000" />
       <workItem from="1622649387235" duration="1282000" />
-      <workItem from="1626112068026" duration="886000" />
+      <workItem from="1626112068026" duration="1129000" />
     </task>
     <servers />
   </component>
