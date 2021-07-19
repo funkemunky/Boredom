@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Atlas">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../Fiona/Iris/depends/Atlas.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
