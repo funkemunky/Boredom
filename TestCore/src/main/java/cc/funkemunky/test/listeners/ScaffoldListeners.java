@@ -30,8 +30,8 @@ public class ScaffoldListeners implements Listener {
     //135 108 387 107 125 355
 
     private static SimpleCollisionBox placeArea = new SimpleCollisionBox(
-            108, 108, 356,
-            134, 125, 386);
+            108, 108, 387,
+            135, 125, 354);
 
     private static Map<Block, Long> blocksPlaced = new ConcurrentHashMap<>();
     private static Map<UUID, ItemStack[]> playerInventory = new HashMap<>();
@@ -68,11 +68,9 @@ public class ScaffoldListeners implements Listener {
 
     @EventHandler
     public void onEvent(PlayerMoveEvent event) {
-        SimpleCollisionBox playerBox = new SimpleCollisionBox(event.getTo().toVector(), event.getTo().toVector())
-                .expand(0.3, 0, 0.3)
-                .expandMax(0,1.8f,0);
+        SimpleCollisionBox playerBox = new SimpleCollisionBox(event.getTo().toVector(), 0.05, 1.8);
 
-        if(playerBox.isCollided(placeArea)) {
+        if(playerBox.isIntersected(placeArea)) {
             if(!playerInventory.containsKey(event.getPlayer().getUniqueId())) {
                 playerInventory.put(event.getPlayer().getUniqueId(), event.getPlayer().getInventory().getContents());
 
