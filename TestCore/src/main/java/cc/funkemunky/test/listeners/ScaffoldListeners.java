@@ -56,14 +56,18 @@ public class ScaffoldListeners implements Listener {
         }, 100L, 40L);
     }
 
-    @EventHandler(priority = EventPriority.LOWEST)
+    @EventHandler(priority = EventPriority.HIGH)
     public void onEvent(BlockPlaceEvent event) {
-        if(event.getBlockPlaced() != null && event.getBlockPlaced().getType().equals(Material.BRICK)) {
+        if(event.getPlayer().isOp()) return;
+        if(event.getBlockPlaced() != null
+                && placeArea.isIntersected(new SimpleCollisionBox(event.getBlockPlaced().getLocation().toVector(),
+                event.getBlockPlaced().getLocation().clone().add(1,1,1).toVector()))
+                && event.getBlockPlaced().getType().equals(Material.BRICK)) {
             if(event.isCancelled()) event.setCancelled(false);
             event.getPlayer().getItemInHand().setAmount(5);
             event.getPlayer().updateInventory();
             blocksPlaced.put(event.getBlockPlaced(), System.currentTimeMillis());
-        }
+        } else event.setCancelled(true);
     }
 
     @EventHandler
