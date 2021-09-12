@@ -4,6 +4,7 @@ import cc.funkemunky.api.Atlas;
 import cc.funkemunky.api.bungee.BungeeAPI;
 import cc.funkemunky.api.reflections.impl.MinecraftReflection;
 import cc.funkemunky.api.utils.Color;
+import cc.funkemunky.api.utils.ConfigSetting;
 import cc.funkemunky.api.utils.MathUtils;
 import cc.funkemunky.api.utils.MiscUtils;
 import cc.funkemunky.api.utils.math.RollingAverageDouble;
@@ -47,8 +48,10 @@ public class TestCore extends JavaPlugin {
         MiscUtils.printToConsole("Loading TestCore v" + getDescription().getVersion() + "...");
         MiscUtils.printToConsole("Running scanner...");
         Atlas.getInstance().initializeScanner(this, true, true);
-        if(kauriEnabled = (kauri = Bukkit.getPluginManager().getPlugin(ToggleScoreboard.devServer ? "Kauri" : "KauriLoader")) != null
-                && (kauriEnabled = Bukkit.getPluginManager().isPluginEnabled(ToggleScoreboard.devServer ? "Kauri" : "KauriLoader"))) {
+        if(kauriEnabled = (kauri = Bukkit.getPluginManager().getPlugin(ToggleScoreboard.devServer
+                ? "Kauri" : "KauriLoader")) != null
+                && (kauriEnabled = Bukkit.getPluginManager().isPluginEnabled(ToggleScoreboard.devServer
+                ? "Kauri" : "KauriLoader"))) {
             MiscUtils.printToConsole("Kauri enabled! Loading Kauri Test server specific things...");
             Atlas.getInstance().getEventManager().registerListeners(new CheatListeners(), this);
             ScoreboardLib.setPluginInstance(this);
@@ -65,13 +68,15 @@ public class TestCore extends JavaPlugin {
                 player.setPlayerTime(Settings.timeOfDay.getValue(player).timeMillis, false));
 
         //Restart every 12 hours.
-        MiscUtils.printToConsole("Restarting server in 12 hours...");
-        new BukkitRunnable() {
-            public void run() {
-                MiscUtils.printToConsole("&cShutting down server...");
-                Bukkit.getServer().shutdown();
-            }
-        }.runTaskLater(this, 864000L);
+        if(ConfigSettings.serverRestart) {
+            MiscUtils.printToConsole("Restarting server in 12 hours...");
+            new BukkitRunnable() {
+                public void run() {
+                    MiscUtils.printToConsole("&cShutting down server...");
+                    Bukkit.getServer().shutdown();
+                }
+            }.runTaskLater(this, 864000L);
+        }
     }
 
     public void onDisable() {

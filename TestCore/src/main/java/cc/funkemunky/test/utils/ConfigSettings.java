@@ -23,4 +23,7 @@ public class ConfigSettings {
 
     @ConfigSetting(path = "bungee", name = "backupServer")
     public static String backupServer = "test";
+
+    @ConfigSetting(name = "server-restart")
+    public static boolean serverRestart = false;
 }
