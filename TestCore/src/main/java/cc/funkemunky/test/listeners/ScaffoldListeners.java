@@ -1,9 +1,11 @@
 package cc.funkemunky.test.listeners;
 
+import cc.funkemunky.api.tinyprotocol.api.ProtocolVersion;
 import cc.funkemunky.api.utils.Helper;
 import cc.funkemunky.api.utils.Init;
 import cc.funkemunky.api.utils.Materials;
 import cc.funkemunky.api.utils.RunUtils;
+import cc.funkemunky.api.utils.world.BlockData;
 import cc.funkemunky.api.utils.world.types.SimpleCollisionBox;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -58,8 +60,8 @@ public class ScaffoldListeners implements Listener {
     public void onEvent(BlockPlaceEvent event) {
         if(event.getPlayer().isOp()) return;
         if(event.getBlockPlaced() != null
-                && placeArea.isIntersected(new SimpleCollisionBox(event.getBlockPlaced().getLocation().toVector(),
-                event.getBlockPlaced().getLocation().clone().add(1,1,1).toVector()))
+                && placeArea.isIntersected(BlockData
+                .getData(event.getBlockPlaced().getType()).getBox(event.getBlock(), ProtocolVersion.getGameVersion()))
                 && event.getBlockPlaced().getType().equals(Material.BRICK)) {
             if(event.isCancelled()) event.setCancelled(false);
             event.getPlayer().getItemInHand().setAmount(5);

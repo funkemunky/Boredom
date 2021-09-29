@@ -82,9 +82,6 @@ public class TestCore extends JavaPlugin {
     public void onDisable() {
         ScaffoldListeners.reset();
         runBungeeStuff();
-        scoreboardMap.forEach((uuid, board) -> {
-            board.deactivate();
-        });
         scoreboardMap.clear();
         HandlerList.unregisterAll(this);
         Atlas.getInstance().getCommandManager(this).unregisterCommands();
