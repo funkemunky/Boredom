@@ -87,7 +87,6 @@ public class TestCore extends JavaPlugin {
         });
         scoreboardMap.clear();
         HandlerList.unregisterAll(this);
-        Atlas.getInstance().getEventManager().unregisterAll(this);
         Atlas.getInstance().getCommandManager(this).unregisterCommands();
         Bukkit.getScheduler().cancelTasks(this);
     }

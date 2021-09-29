@@ -5,7 +5,6 @@ import cc.funkemunky.api.utils.Init;
 import cc.funkemunky.api.utils.Materials;
 import cc.funkemunky.api.utils.RunUtils;
 import cc.funkemunky.api.utils.world.types.SimpleCollisionBox;
-import cc.funkemunky.test.TestCore;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -15,7 +14,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.server.PluginDisableEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
