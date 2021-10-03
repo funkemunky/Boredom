@@ -1,4 +1,4 @@
-package cc.funkemunky.test.handlers;
+package cc.funkemunky.test.handlers.speed;
 
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Location;
