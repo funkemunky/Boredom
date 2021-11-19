@@ -62,6 +62,8 @@ public class GeneralListeners implements Listener {
                 attacker.sendMessage(ChatBuilder
                         .create("You cannot attack other players while your noDamage is set to true.")
                         .color(Color.Red).build());
+            } else {
+                event.setDamage(0.000001);
             }
         }
     }
