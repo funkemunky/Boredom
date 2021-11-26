@@ -49,9 +49,9 @@ public class TestCore extends JavaPlugin {
         MiscUtils.printToConsole("Running scanner...");
         Atlas.getInstance().initializeScanner(this, true, true);
         if(kauriEnabled = (kauri = Bukkit.getPluginManager().getPlugin(ToggleScoreboard.devServer
-                ? "Kauri" : "KauriLoader")) != null
+                ? "Kauri" : "Kauri")) != null
                 && (kauriEnabled = Bukkit.getPluginManager().isPluginEnabled(ToggleScoreboard.devServer
-                ? "Kauri" : "KauriLoader"))) {
+                ? "Kauri" : "Kauri"))) {
             MiscUtils.printToConsole("Kauri enabled! Loading Kauri Test server specific things...");
             Atlas.getInstance().getEventManager().registerListeners(new CheatListeners(), this);
             ScoreboardLib.setPluginInstance(this);
