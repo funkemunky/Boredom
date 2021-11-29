@@ -58,6 +58,7 @@ public class ScaffoldListeners implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onEvent(BlockPlaceEvent event) {
+        if(event.getPlayer().isOp()) return;
         if(event.getBlockPlaced() != null
                 && placeArea.isIntersected(BlockData
                 .getData(event.getBlockPlaced().getType()).getBox(event.getBlock(), ProtocolVersion.getGameVersion()))
@@ -66,7 +67,7 @@ public class ScaffoldListeners implements Listener {
             event.getPlayer().getItemInHand().setAmount(5);
             event.getPlayer().updateInventory();
             blocksPlaced.put(event.getBlockPlaced(), System.currentTimeMillis());
-        } else if(!event.getPlayer().isOp()) event.setCancelled(true);
+        } else event.setCancelled(true);
     }
 
     @EventHandler
