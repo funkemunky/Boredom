@@ -106,7 +106,7 @@ public class TestCore extends JavaPlugin {
                     EntryBuilder builder = new EntryBuilder()
                             .next(MiscUtils.line(ChatColor.RESET.toString() + Color.Dark_Gray).substring(0, 30))
                             .next("&6&lLag Information")
-                            .next("&8» &ePing&7: &f" + MinecraftReflection.getPing(player))
+                            .next("&8» &ePing&7: &f" + player.spigot().getPing())
                             .next("&8» &eTPS&7: &f" + MathUtils.round(Bukkit.spigot().getTPS()[0], 2))
                             .blank()
                             .next("&6&lViolations");

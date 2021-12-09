@@ -40,7 +40,7 @@ public class CheatListeners implements AtlasListener {
             TextComponent comp = new TextComponent(kickTitle);
 
             final Title title = new Title(new BaseComponent[]{kickTitle},
-                    ChatBuilder.create().text(event.getCheck().getName()).color(Color.White).build(),
+                    new ComponentBuilder(event.getCheck().getName()).color(ChatColor.WHITE).create(),
                     3, 40, 3);
             event.getPlayer().sendTitle(title);
             event.setCancelled(true);
