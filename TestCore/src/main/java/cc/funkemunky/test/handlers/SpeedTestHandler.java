@@ -7,6 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Arrow;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,6 +16,7 @@ import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
+import org.bukkit.event.vehicle.VehicleExitEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.util.Vector;
 
@@ -26,8 +28,16 @@ public class SpeedTestHandler implements Listener {
     @Instance
     public static SpeedTestHandler INSTANCE;
 
-    private Map<UUID, TestResult> testResultsMap = new HashMap<>();
-    private static double setRatio = 6.25;
+    private final Map<UUID, TestResult> testResultsMap = new HashMap<>();
+    private static final double setRatio = 6.25;
+
+    @EventHandler
+    public void onDismount(VehicleExitEvent event) {
+        if(event.getVehicle().getType() == EntityType.ARROW
+                && testResultsMap.containsKey(event.getExited().getUniqueId())) {
+            event.setCancelled(true);
+        }
+    }
 
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
