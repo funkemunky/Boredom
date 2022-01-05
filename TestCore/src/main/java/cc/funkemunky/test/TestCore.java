@@ -14,6 +14,7 @@ import cc.funkemunky.test.listeners.ScaffoldListeners;
 import cc.funkemunky.test.user.Settings;
 import cc.funkemunky.test.user.User;
 import cc.funkemunky.test.utils.ConfigSettings;
+import dev.brighten.api.KauriAPI;
 import dev.brighten.db.db.Database;
 import dev.brighten.db.db.FlatfileDatabase;
 import me.tigerhix.lib.scoreboard.ScoreboardLib;
@@ -42,6 +43,7 @@ public class TestCore extends JavaPlugin {
     private long lastTick;
     private double tps;
     public Database database;
+    private CheatListeners listeners;
 
     public void onEnable() {
         INSTANCE = this;
@@ -53,7 +55,7 @@ public class TestCore extends JavaPlugin {
                 && (kauriEnabled = Bukkit.getPluginManager().isPluginEnabled(ToggleScoreboard.devServer
                 ? "Kauri" : "Kauri"))) {
             MiscUtils.printToConsole("Kauri enabled! Loading Kauri Test server specific things...");
-            Atlas.getInstance().getEventManager().registerListeners(new CheatListeners(), this);
+            listeners = new CheatListeners();
             ScoreboardLib.setPluginInstance(this);
             for(Player player : Bukkit.getOnlinePlayers()) {
                 Scoreboard scoreboard = getScoreboard(player);
@@ -80,6 +82,9 @@ public class TestCore extends JavaPlugin {
     }
 
     public void onDisable() {
+        if(listeners != null) {
+            KauriAPI.INSTANCE.unregisterEvents(this);
+        }
         ScaffoldListeners.reset();
         runBungeeStuff();
         scoreboardMap.clear();
