@@ -19,7 +19,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.scheduler.BukkitRunnable;
 
-@Init(requirePlugins = "StrikePractice")
+//@Init(requirePlugins = "StrikePractice")
 public class StrikePracticePlugin implements Listener {
 
     public StrikePracticePlugin() {

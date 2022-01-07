@@ -26,11 +26,7 @@ public class User {
     public ItemStack[] previousInventoryContents;
 
     public static User getUser(UUID uuid) {
-        return users.computeIfAbsent(uuid, key -> {
-           User user = new User(uuid);
-           users.put(key, user);
-           return user;
-        });
+        return users.computeIfAbsent(uuid, key -> new User(uuid));
     }
 
     public boolean isAllowingCancel() {

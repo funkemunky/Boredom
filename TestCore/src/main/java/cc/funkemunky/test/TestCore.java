@@ -3,10 +3,7 @@ package cc.funkemunky.test;
 import cc.funkemunky.api.Atlas;
 import cc.funkemunky.api.bungee.BungeeAPI;
 import cc.funkemunky.api.reflections.impl.MinecraftReflection;
-import cc.funkemunky.api.utils.Color;
-import cc.funkemunky.api.utils.ConfigSetting;
-import cc.funkemunky.api.utils.MathUtils;
-import cc.funkemunky.api.utils.MiscUtils;
+import cc.funkemunky.api.utils.*;
 import cc.funkemunky.api.utils.math.RollingAverageDouble;
 import cc.funkemunky.test.commands.ToggleScoreboard;
 import cc.funkemunky.test.listeners.CheatListeners;
@@ -33,6 +30,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class TestCore extends JavaPlugin {
 
@@ -40,10 +39,12 @@ public class TestCore extends JavaPlugin {
     public static TestCore INSTANCE;
     public boolean kauriEnabled;
     public Plugin kauri;
-    private long lastTick;
-    private double tps;
     public Database database;
     private CheatListeners listeners;
+    //Lag Information
+    public RollingAverageDouble tps = new RollingAverageDouble(4, 20);
+    public long lastTick;
+    public int currentTick;
 
     public void onEnable() {
         INSTANCE = this;
@@ -81,6 +82,22 @@ public class TestCore extends JavaPlugin {
         }
     }
 
+    private void runTpsTask() {
+        AtomicInteger ticks = new AtomicInteger();
+        AtomicLong lastTimeStamp = new AtomicLong(0);
+        RunUtils.taskTimer(() -> {
+            ticks.getAndIncrement();
+            currentTick++;
+            long currentTime = System.currentTimeMillis();
+            if(ticks.get() >= 10) {
+                ticks.set(0);
+                tps.add(500D / (currentTime - lastTimeStamp.get()) * 20);
+                lastTimeStamp.set(currentTime);
+            }
+            lastTick = currentTime;
+        }, this, 1L, 1L);
+    }
+
     public void onDisable() {
         if(listeners != null) {
             KauriAPI.INSTANCE.unregisterEvents(this);
@@ -112,7 +129,7 @@ public class TestCore extends JavaPlugin {
                             .next(MiscUtils.line(ChatColor.RESET.toString() + Color.Dark_Gray).substring(0, 30))
                             .next("&6&lLag Information")
                             .next("&8» &ePing&7: &f" + player.spigot().getPing())
-                            .next("&8» &eTPS&7: &f" + MathUtils.round(Bukkit.spigot().getTPS()[0], 2))
+                            .next("&8» &eTPS&7: &f" + MathUtils.round(tps.getAverage(), 2))
                             .blank()
                             .next("&6&lViolations");
                     if(user.violations.size() == 0) {
