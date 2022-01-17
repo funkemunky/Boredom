@@ -11,6 +11,6 @@ public class TestResult {
     public final Location startLoc;
     public Location previousLoc;
     public boolean started;
-    public long startTime, endTime;
+    public long startTime, endTime, moveTime;
     public double totalLength, distance;
 }

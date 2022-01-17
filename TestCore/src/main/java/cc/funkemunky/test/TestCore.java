@@ -8,6 +8,7 @@ import cc.funkemunky.api.utils.math.RollingAverageDouble;
 import cc.funkemunky.test.commands.ToggleScoreboard;
 import cc.funkemunky.test.listeners.CheatListeners;
 import cc.funkemunky.test.listeners.ScaffoldListeners;
+import cc.funkemunky.test.listeners.StrikePracticePlugin;
 import cc.funkemunky.test.user.Settings;
 import cc.funkemunky.test.user.User;
 import cc.funkemunky.test.utils.ConfigSettings;
@@ -51,10 +52,9 @@ public class TestCore extends JavaPlugin {
         MiscUtils.printToConsole("Loading TestCore v" + getDescription().getVersion() + "...");
         MiscUtils.printToConsole("Running scanner...");
         Atlas.getInstance().initializeScanner(this, true, true);
-        if(kauriEnabled = (kauri = Bukkit.getPluginManager().getPlugin(ToggleScoreboard.devServer
-                ? "Kauri" : "Kauri")) != null
-                && (kauriEnabled = Bukkit.getPluginManager().isPluginEnabled(ToggleScoreboard.devServer
-                ? "Kauri" : "Kauri"))) {
+        if(kauriEnabled =
+                ((kauri = Bukkit.getPluginManager().getPlugin("Kauri")) != null
+                        && Bukkit.getPluginManager().isPluginEnabled("Kauri"))) {
             MiscUtils.printToConsole("Kauri enabled! Loading Kauri Test server specific things...");
             listeners = new CheatListeners();
             ScoreboardLib.setPluginInstance(this);
@@ -62,6 +62,16 @@ public class TestCore extends JavaPlugin {
                 Scoreboard scoreboard = getScoreboard(player);
                 scoreboard.activate();
                 scoreboardMap.put(player.getUniqueId(), scoreboard);
+            }
+        }
+        if(Bukkit.getPluginManager().getPlugin("StrikePractice") != null) {
+            try {
+                Class.forName("dev.brighten.spigot.knockback.KnockbackProfile");
+                Bukkit.getPluginManager().registerEvents(new StrikePracticePlugin(), this);
+            } catch(ClassNotFoundException | NullPointerException e) {
+                MiscUtils.printToConsole("fSpigot is not present. Unregistering...");
+                HandlerList.unregisterAll(this);
+                return;
             }
         }
         database = new FlatfileDatabase("testcoreInfo");

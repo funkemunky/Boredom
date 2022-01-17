@@ -6,7 +6,6 @@ import cc.funkemunky.api.utils.RunUtils;
 import cc.funkemunky.api.utils.msg.ChatBuilder;
 import cc.funkemunky.test.commands.LockdownMode;
 import cc.funkemunky.test.user.User;
-import ga.strikepractice.StrikePracticeAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -51,7 +50,7 @@ public class GeneralListeners implements Listener {
         if(event.getDamager() instanceof Player && event.getEntity() instanceof Player) {
             Player attacker = (Player) event.getDamager();
 
-            if(StrikePracticeAPI.isInEvent(attacker) || StrikePracticeAPI.isInFight(attacker)) return;
+            if(StrikePracticePlugin.notInTestMap(attacker)) return;
 
             User user = User.getUser(attacker.getUniqueId());
 
@@ -73,7 +72,7 @@ public class GeneralListeners implements Listener {
         if(event.getEntity() instanceof Player) {
             Player attacker = (Player) event.getEntity();
 
-            if(StrikePracticeAPI.isInEvent(attacker) || StrikePracticeAPI.isInFight(attacker)) return;
+            if(StrikePracticePlugin.notInTestMap(attacker)) return;
 
             User user = User.getUser(attacker.getUniqueId());
 
@@ -88,7 +87,7 @@ public class GeneralListeners implements Listener {
         if(event.getEntity() instanceof Player) {
             Player player = (Player) event.getEntity();
 
-            if(StrikePracticeAPI.isInEvent(player) || StrikePracticeAPI.isInFight(player)) return;
+            if(StrikePracticePlugin.notInTestMap(player)) return;
 
             User user = User.getUser(player.getUniqueId());
 

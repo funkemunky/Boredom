@@ -30,8 +30,7 @@ public class ScaffoldListeners implements Listener {
     //135 108 387 107 125 355
 
     private static SimpleCollisionBox placeArea = new SimpleCollisionBox(
-            108, 108, 387,
-            135, 125, 354);
+            100,108,387.99, 135.99,125,353);
 
     private static Map<Block, Long> blocksPlaced = new ConcurrentHashMap<>();
     private static Map<UUID, ItemStack[]> playerInventory = new HashMap<>();

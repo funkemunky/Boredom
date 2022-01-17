@@ -29,7 +29,7 @@ public class SpeedTestHandler implements Listener {
     public static SpeedTestHandler INSTANCE;
 
     private final Map<UUID, TestResult> testResultsMap = new HashMap<>();
-    private static final double setRatio = 6.25;
+    private static final double setRatio = 6.45;
 
     @EventHandler
     public void onDismount(VehicleExitEvent event) {
@@ -97,10 +97,9 @@ public class SpeedTestHandler implements Listener {
 
             long delta = result.endTime - result.startTime;
 
-            double distance = event.getPlayer().getLocation().toVector().setY(0)
-                    .distance(result.startLoc.toVector().setY(0));
+            double distance = result.distance;
             event.getPlayer().teleport(result.previousLoc);
-            double blocksPerSecond = distance / (delta / 1000D);
+            double blocksPerSecond = distance / (result.moveTime / 20.);
             double vanillaRatio = blocksPerSecond / setRatio;
             double pct = vanillaRatio * 100;
 
@@ -108,7 +107,7 @@ public class SpeedTestHandler implements Listener {
                     + MathUtils.round(delta / 1000D, 1) + " seconds &7moving &f"
                     + MathUtils.round(distance, 1) + " blocks &7&o(&f&o%v blocks per seconds&7&o)."
                     .replace("%v", String.valueOf(MathUtils
-                            .round(distance / (delta / 1000D), 2)))));
+                            .round(blocksPerSecond, 2)))));
             double pctDelta = pct - 100;
             event.getPlayer().sendMessage(Color.translate("&7Your speed is " + (Math.abs(pctDelta) < 0.8
                     ? "the same as vanilla" : (pctDelta < 0 ? "slower than vanilla" : "faster than vanilla") + " &7(&f"
@@ -137,7 +136,10 @@ public class SpeedTestHandler implements Listener {
         if(testResultsMap.containsKey(event.getPlayer().getUniqueId())) {
             TestResult result = testResultsMap.get(event.getPlayer().getUniqueId());
 
-            if(result.started) result.distance+= event.getTo().toVector().setY(0).distance(event.getFrom().toVector().setY(0));
+            if(result.started) {
+                result.distance+= event.getTo().toVector().setY(0).distance(event.getFrom().toVector().setY(0));
+                result.moveTime+= 1;
+            }
         }
     }
 
