@@ -1,11 +1,9 @@
 package cc.funkemunky.test.listeners;
 
-import cc.funkemunky.api.tinyprotocol.api.ProtocolVersion;
 import cc.funkemunky.api.utils.Helper;
 import cc.funkemunky.api.utils.Init;
 import cc.funkemunky.api.utils.Materials;
 import cc.funkemunky.api.utils.RunUtils;
-import cc.funkemunky.api.utils.world.BlockData;
 import cc.funkemunky.api.utils.world.types.SimpleCollisionBox;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -30,7 +28,7 @@ public class ScaffoldListeners implements Listener {
     //135 108 387 107 125 355
 
     private static SimpleCollisionBox placeArea = new SimpleCollisionBox(
-            100,108,387.99, 135.99,125,353);
+            100,107,353, 135.99,125,387.99);
 
     private static Map<Block, Long> blocksPlaced = new ConcurrentHashMap<>();
     private static Map<UUID, ItemStack[]> playerInventory = new HashMap<>();
@@ -57,9 +55,10 @@ public class ScaffoldListeners implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onEvent(BlockPlaceEvent event) {
+        SimpleCollisionBox playerBox = new SimpleCollisionBox(event.getPlayer().getLocation().toVector(),
+                0.05, 1.8);
         if(event.getBlockPlaced() != null
-                && placeArea.isIntersected(BlockData
-                .getData(event.getBlockPlaced().getType()).getBox(event.getBlock(), ProtocolVersion.getGameVersion()))
+                && playerBox.isIntersected(placeArea)
                 && event.getBlockPlaced().getType().equals(Material.BRICK)) {
             if(event.isCancelled()) event.setCancelled(false);
             event.getPlayer().getItemInHand().setAmount(5);
