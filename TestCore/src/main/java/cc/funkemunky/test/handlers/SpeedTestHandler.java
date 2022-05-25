@@ -1,6 +1,10 @@
 package cc.funkemunky.test.handlers;
 
+import cc.funkemunky.api.tinyprotocol.api.ProtocolVersion;
 import cc.funkemunky.api.utils.*;
+import cc.funkemunky.api.utils.world.BlockData;
+import cc.funkemunky.api.utils.world.EntityData;
+import cc.funkemunky.api.utils.world.types.SimpleCollisionBox;
 import cc.funkemunky.test.utils.StringUtil;
 import lombok.val;
 import org.bukkit.Location;
@@ -28,8 +32,8 @@ public class SpeedTestHandler implements Listener {
     @Instance
     public static SpeedTestHandler INSTANCE;
 
-    private final Map<UUID, TestResult> testResultsMap = new HashMap<>();
-    private static final double setRatio = 6.45;
+    public static final Map<UUID, TestResult> testResultsMap = new HashMap<>();
+    private static final double setRatio = 6.82;
 
     @EventHandler
     public void onDismount(VehicleExitEvent event) {
@@ -137,8 +141,40 @@ public class SpeedTestHandler implements Listener {
             TestResult result = testResultsMap.get(event.getPlayer().getUniqueId());
 
             if(result.started) {
-                result.distance+= event.getTo().toVector().setY(0).distance(event.getFrom().toVector().setY(0));
+                double horizontalDistance = event.getTo().toVector().setY(0).distance(event.getFrom().toVector().setY(0));
+                result.distance+= horizontalDistance;
                 result.moveTime+= 1;
+                result.average.add(horizontalDistance * 20);
+
+                SimpleCollisionBox box = ((SimpleCollisionBox)
+                        EntityData.getEntityBox(event.getTo().clone(), event.getPlayer()))
+                        .expandMin(0, -2, 0);
+
+                if(Helper.getBlocksNearby2(event.getPlayer().getWorld(), box, Materials.SOLID).stream()
+                        .anyMatch(b -> b.getType().equals(Material.REDSTONE_BLOCK)
+                                && BlockData.getData(b.getType())
+                                .getBox(b, ProtocolVersion.getGameVersion()).isCollided(box))) {
+                        result.endTime = System.currentTimeMillis();
+
+                        long delta = result.endTime - result.startTime;
+
+                        double distance = result.distance;
+                        event.getPlayer().teleport(result.previousLoc);
+                        double blocksPerSecond = distance / (result.moveTime / 20.);
+                        double vanillaRatio = blocksPerSecond / setRatio;
+                        double pct = vanillaRatio * 100;
+
+                        event.getPlayer().sendMessage(Color.translate("&7Completed speed test in &f"
+                                + MathUtils.round(delta / 1000D, 1) + " seconds &7moving &f"
+                                + MathUtils.round(distance, 1) + " blocks &7&o(&f&o%v blocks per seconds&7&o)."
+                                .replace("%v", String.valueOf(MathUtils
+                                        .round(blocksPerSecond, 2)))));
+                        double pctDelta = pct - 100;
+                        event.getPlayer().sendMessage(Color.translate("&7Your speed is " + (Math.abs(pctDelta) < 0.8
+                                ? "the same as vanilla" : (pctDelta < 0 ? "slower than vanilla" : "faster than vanilla") + " &7(&f"
+                                + MathUtils.round(pctDelta, 1) + "%&7)")));
+                        testResultsMap.remove(event.getPlayer().getUniqueId());
+                }
             }
         }
     }

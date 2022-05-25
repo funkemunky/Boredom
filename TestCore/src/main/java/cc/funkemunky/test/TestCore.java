@@ -6,12 +6,15 @@ import cc.funkemunky.api.reflections.impl.MinecraftReflection;
 import cc.funkemunky.api.utils.*;
 import cc.funkemunky.api.utils.math.RollingAverageDouble;
 import cc.funkemunky.test.commands.ToggleScoreboard;
+import cc.funkemunky.test.handlers.SpeedTestHandler;
+import cc.funkemunky.test.handlers.TestResult;
 import cc.funkemunky.test.listeners.CheatListeners;
 import cc.funkemunky.test.listeners.ScaffoldListeners;
 import cc.funkemunky.test.listeners.StrikePracticePlugin;
 import cc.funkemunky.test.user.Settings;
 import cc.funkemunky.test.user.User;
 import cc.funkemunky.test.utils.ConfigSettings;
+import cc.funkemunky.test.utils.StringUtil;
 import dev.brighten.api.KauriAPI;
 import dev.brighten.db.db.Database;
 import dev.brighten.db.db.FlatfileDatabase;
@@ -22,6 +25,7 @@ import me.tigerhix.lib.scoreboard.common.animate.ScrollableString;
 import me.tigerhix.lib.scoreboard.type.Entry;
 import me.tigerhix.lib.scoreboard.type.Scoreboard;
 import me.tigerhix.lib.scoreboard.type.ScoreboardHandler;
+import org.apache.commons.lang.time.DurationFormatUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -156,6 +160,19 @@ public class TestCore extends JavaPlugin {
                         if(user.violations.size() > 5) {
                             builder.next("&7&o*More Violations*");
                         }
+                    }
+
+                    if(SpeedTestHandler.testResultsMap.containsKey(player.getUniqueId())) {
+                        builder.blank();
+                        builder.next("&6&lSpeed Test");
+                        TestResult tr = SpeedTestHandler.testResultsMap.get(player.getUniqueId());
+                        if(tr.startTime == 0) {
+                            builder.next(Color.Red + Color.Italics + "Starting...");
+                        } else {
+                            builder.next(String.format("&8» &7Average BPS: &f%.3f", tr.average.getAverage()));
+                            builder.next(String.format("&8» &7Time Elapsed: &f" + StringUtil
+                                    .formatDuration(System.currentTimeMillis() - tr.startTime)));
+                        };
                     }
 
                     if(ToggleScoreboard.devServer) {
