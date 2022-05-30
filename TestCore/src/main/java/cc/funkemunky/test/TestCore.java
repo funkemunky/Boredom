@@ -6,6 +6,7 @@ import cc.funkemunky.api.reflections.impl.MinecraftReflection;
 import cc.funkemunky.api.utils.*;
 import cc.funkemunky.api.utils.math.RollingAverageDouble;
 import cc.funkemunky.test.commands.ToggleScoreboard;
+import cc.funkemunky.test.db.Mongo;
 import cc.funkemunky.test.handlers.SpeedTestHandler;
 import cc.funkemunky.test.handlers.TestResult;
 import cc.funkemunky.test.listeners.CheatListeners;
@@ -44,7 +45,7 @@ public class TestCore extends JavaPlugin {
     public static TestCore INSTANCE;
     public boolean kauriEnabled;
     public Plugin kauri;
-    public Database database;
+    public Mongo database;
     private CheatListeners listeners;
     //Lag Information
     public RollingAverageDouble tps = new RollingAverageDouble(4, 20);
@@ -56,6 +57,10 @@ public class TestCore extends JavaPlugin {
         MiscUtils.printToConsole("Loading TestCore v" + getDescription().getVersion() + "...");
         MiscUtils.printToConsole("Running scanner...");
         Atlas.getInstance().initializeScanner(this, true, true);
+
+        MiscUtils.printToConsole("Loading Mongo...");
+        database = new Mongo();
+
         if(kauriEnabled =
                 ((kauri = Bukkit.getPluginManager().getPlugin("Kauri")) != null
                         && Bukkit.getPluginManager().isPluginEnabled("Kauri"))) {
@@ -78,8 +83,6 @@ public class TestCore extends JavaPlugin {
                 return;
             }
         }
-        database = new FlatfileDatabase("testcoreInfo");
-        database.loadMappings();
         MiscUtils.printToConsole("Setting times of players based on settings...");
         Bukkit.getOnlinePlayers().forEach(player ->
                 player.setPlayerTime(Settings.timeOfDay.getValue(player).timeMillis, false));

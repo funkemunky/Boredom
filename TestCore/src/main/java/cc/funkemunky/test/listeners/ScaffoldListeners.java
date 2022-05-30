@@ -1,11 +1,9 @@
 package cc.funkemunky.test.listeners;
 
-import cc.funkemunky.api.utils.Helper;
-import cc.funkemunky.api.utils.Init;
-import cc.funkemunky.api.utils.Materials;
-import cc.funkemunky.api.utils.RunUtils;
+import cc.funkemunky.api.utils.*;
 import cc.funkemunky.api.utils.world.types.SimpleCollisionBox;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
@@ -15,11 +13,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.util.Vector;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
@@ -33,6 +29,12 @@ public class ScaffoldListeners implements Listener {
     private static Map<Block, Long> blocksPlaced = new ConcurrentHashMap<>();
     private static Map<UUID, ItemStack[]> playerInventory = new HashMap<>();
     private static World world;
+
+    @ConfigSetting(path = "build", name = "one")
+    private Vector firstLoc = new Vector(100,107,353);
+
+    @ConfigSetting(path = "build", name = "two")
+    private Vector secondLoc = new Vector(135.99,125,387.99);
 
     public ScaffoldListeners() {
         world = Bukkit.getWorld("world");
@@ -51,6 +53,8 @@ public class ScaffoldListeners implements Listener {
                         blocksPlaced.remove(key);
                     });
         }, 100L, 40L);
+
+        placeArea = new SimpleCollisionBox(firstLoc, secondLoc);
     }
 
     @EventHandler(priority = EventPriority.HIGH)

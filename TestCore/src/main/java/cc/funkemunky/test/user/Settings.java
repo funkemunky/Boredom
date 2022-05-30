@@ -1,41 +1,88 @@
 package cc.funkemunky.test.user;
 
+import cc.funkemunky.api.utils.RunUtils;
 import cc.funkemunky.api.utils.Setting;
 import cc.funkemunky.test.TestCore;
 import cc.funkemunky.test.utils.MinecraftTime;
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
 import dev.brighten.db.db.StructureSet;
 import lombok.val;
+import org.bson.Document;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 public class Settings {
+    private static LoadingCache<UUID, Document> cache = CacheBuilder.newBuilder()
+            .expireAfterWrite(20, TimeUnit.SECONDS).build(new CacheLoader<UUID, Document>() {
+                @Override
+                public Document load(@NotNull UUID uuid) {
+                    Document set = TestCore.INSTANCE.database.getSettings()
+                            .find(Filters.eq("uuid", uuid.toString())).first();
+
+                    if (set != null) {
+                        return set;
+                    } else {
+                        set = new Document("uuid", uuid.toString());
+
+                        set.put("cancelling", true);
+                        set.put("kicking", true);
+                        set.put("noDamage", true);
+                        set.put("noHunger", true);
+                        set.put("timeOfDay", MinecraftTime.DAY.toString());
+
+                        Document finalSet = set;
+                        RunUtils.taskAsync(() -> TestCore.INSTANCE.database.getSettings().insertOne(finalSet));
+                        return set;
+                    }
+                }
+            });
+
     public static Setting<Boolean> allowKauriCancel = new Setting<>("kauriCancel",
-            (pl) -> getStructureSet(pl.getUniqueId()).getObject("cancelling"), (pl, enabled) -> {
-        StructureSet set = getStructureSet(pl.getUniqueId());
-        set.input("cancelling", enabled);
-        set.save(TestCore.INSTANCE.database);
+            (pl) -> getStructureSet(pl.getUniqueId()).getBoolean("cancelling"), (pl, enabled) -> {
+        Document set = getStructureSet(pl.getUniqueId());
+
+        TestCore.INSTANCE.database.getSettings()
+                .updateOne(Filters.eq("uuid", pl.getUniqueId().toString()),
+                        Updates.set("cancelling", enabled));
+        cache.refresh(pl.getUniqueId());
     }, true, false);
     public static Setting<Boolean> allowKauriKicking = new Setting<>("kauriKicking",
-            (pl) -> getStructureSet(pl.getUniqueId()).getObject("kicking"), (pl, enabled) -> {
-        StructureSet set = getStructureSet(pl.getUniqueId());
-        set.input("kicking", enabled);
-        set.save(TestCore.INSTANCE.database);
+            (pl) -> getStructureSet(pl.getUniqueId()).getBoolean("kicking"), (pl, enabled) -> {
+        Document set = getStructureSet(pl.getUniqueId());
+
+        TestCore.INSTANCE.database.getSettings()
+                .updateOne(Filters.eq("uuid", pl.getUniqueId().toString()),
+                        Updates.set("kicking", enabled));
+        cache.refresh(pl.getUniqueId());
     }, true, false);
     public static Setting<Boolean> noDamage = new Setting<>("noDamage",
-            (pl) -> getStructureSet(pl.getUniqueId()).getObject("noDamage"), (pl, enabled) -> {
-        StructureSet set = getStructureSet(pl.getUniqueId());
-        set.input("noDamage", enabled);
-        set.save(TestCore.INSTANCE.database);
+            (pl) -> getStructureSet(pl.getUniqueId()).getBoolean("noDamage"), (pl, enabled) -> {
+        Document set = getStructureSet(pl.getUniqueId());
+
+        TestCore.INSTANCE.database.getSettings()
+                .updateOne(Filters.eq("uuid", pl.getUniqueId().toString()),
+                        Updates.set("noDamage", enabled));
+        cache.refresh(pl.getUniqueId());
     }, true, false);
     public static Setting<Boolean> noHunger = new Setting<>("noHunger",
-            (pl) -> getStructureSet(pl.getUniqueId()).getObject("noHunger"), (pl, enabled) -> {
-        StructureSet set = getStructureSet(pl.getUniqueId());
-        set.input("noHunger", enabled);
-        set.save(TestCore.INSTANCE.database);
+            (pl) -> getStructureSet(pl.getUniqueId()).getBoolean("noHunger"), (pl, enabled) -> {
+        Document set = getStructureSet(pl.getUniqueId());
+
+        TestCore.INSTANCE.database.getSettings()
+                .updateOne(Filters.eq("noHunger", pl.getUniqueId().toString()),
+                        Updates.set("cancelling", enabled));
+        cache.refresh(pl.getUniqueId());
     }, true, false);
     public static Setting<MinecraftTime> timeOfDay = new Setting<>("timeOfDay",
             (pl) -> {
-                Object object = getStructureSet(pl.getUniqueId()).getObject("timeOfDay");
+                Object object = getStructureSet(pl.getUniqueId()).get("timeOfDay");
 
                 if (object instanceof MinecraftTime) {
                     return (MinecraftTime) object;
@@ -46,41 +93,15 @@ public class Settings {
                     return MinecraftTime.DAY;
                 }
             }, (pl, dayTime) -> {
-        StructureSet set = getStructureSet(pl.getUniqueId());
-        set.input("timeOfDay", dayTime);
+        Document set = getStructureSet(pl.getUniqueId());
 
-        pl.setPlayerTime(dayTime.timeMillis, false);
-        set.save(TestCore.INSTANCE.database);
+        TestCore.INSTANCE.database.getSettings()
+                .updateOne(Filters.eq("uuid", pl.getUniqueId().toString()),
+                        Updates.set("timeOfDay", dayTime.toString()));
+        cache.refresh(pl.getUniqueId());
     }, MinecraftTime.values());
 
-    public static StructureSet getStructureSet(UUID uuid) {
-        val results = TestCore.INSTANCE.database.get(uuid.toString());
-
-        if (results.size() > 0) {
-            StructureSet set = results.get(0);
-
-            if (!set.contains("noDamage")) {
-                set.input("noDamage", true);
-            }
-            if (!set.contains("noHunger")) {
-                set.input("noHunger", true);
-            }
-            if (!set.contains("timeOfDay")) {
-                set.input("timeOfDay", MinecraftTime.DAY);
-            }
-
-            return set;
-        } else {
-            StructureSet set = TestCore.INSTANCE.database.create(uuid.toString());
-
-            set.input("cancelling", true);
-            set.input("kicking", true);
-            set.input("noDamage", true);
-            set.input("noHunger", true);
-            set.input("timeOfDay", MinecraftTime.DAY);
-
-            set.save(TestCore.INSTANCE.database);
-            return set;
-        }
+    public static Document getStructureSet(UUID uuid) {
+        return cache.getUnchecked(uuid);
     }
 }
