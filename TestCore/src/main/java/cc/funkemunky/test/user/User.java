@@ -1,11 +1,8 @@
 package cc.funkemunky.test.user;
 
-import cc.funkemunky.api.utils.Setting;
 import cc.funkemunky.api.utils.TickTimer;
 import cc.funkemunky.api.utils.math.RollingAverageDouble;
-import cc.funkemunky.api.utils.menu.preset.button.SettingButton;
 import lombok.RequiredArgsConstructor;
-import lombok.val;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
