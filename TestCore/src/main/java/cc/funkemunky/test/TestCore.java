@@ -2,10 +2,8 @@ package cc.funkemunky.test;
 
 import cc.funkemunky.api.Atlas;
 import cc.funkemunky.api.bungee.BungeeAPI;
-import cc.funkemunky.api.utils.Color;
-import cc.funkemunky.api.utils.MathUtils;
-import cc.funkemunky.api.utils.MiscUtils;
-import cc.funkemunky.api.utils.RunUtils;
+import cc.funkemunky.api.reflections.impl.MinecraftReflection;
+import cc.funkemunky.api.utils.*;
 import cc.funkemunky.api.utils.math.RollingAverageDouble;
 import cc.funkemunky.test.commands.ToggleScoreboard;
 import cc.funkemunky.test.db.Mongo;
@@ -19,12 +17,16 @@ import cc.funkemunky.test.user.User;
 import cc.funkemunky.test.utils.ConfigSettings;
 import cc.funkemunky.test.utils.StringUtil;
 import dev.brighten.api.KauriAPI;
+import dev.brighten.db.db.Database;
+import dev.brighten.db.db.FlatfileDatabase;
 import me.tigerhix.lib.scoreboard.ScoreboardLib;
 import me.tigerhix.lib.scoreboard.common.EntryBuilder;
 import me.tigerhix.lib.scoreboard.common.animate.HighlightedString;
+import me.tigerhix.lib.scoreboard.common.animate.ScrollableString;
 import me.tigerhix.lib.scoreboard.type.Entry;
 import me.tigerhix.lib.scoreboard.type.Scoreboard;
 import me.tigerhix.lib.scoreboard.type.ScoreboardHandler;
+import org.apache.commons.lang.time.DurationFormatUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -145,7 +147,6 @@ public class TestCore extends JavaPlugin {
                             .next("&6&lLag Information")
                             .next("&8» &ePing&7: &f" + player.spigot().getPing())
                             .next("&8» &eTPS&7: &f" + MathUtils.round(tps.getAverage(), 2))
-                            .next("&8» &eCPS&7: &f" + MathUtils.round(user.cpsAvg.getAverage(), 1))
                             .blank()
                             .next("&6&lViolations");
                     if(user.violations.size() == 0) {

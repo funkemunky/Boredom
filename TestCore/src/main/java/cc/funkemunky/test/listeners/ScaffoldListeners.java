@@ -3,6 +3,7 @@ package cc.funkemunky.test.listeners;
 import cc.funkemunky.api.utils.*;
 import cc.funkemunky.api.utils.world.types.SimpleCollisionBox;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
@@ -14,10 +15,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
@@ -63,9 +61,9 @@ public class ScaffoldListeners implements Listener {
     public void onEvent(BlockPlaceEvent event) {
         SimpleCollisionBox playerBox = new SimpleCollisionBox(event.getPlayer().getLocation().toVector(),
                 0.05, 1.8);
-        if(!event.getBlockPlaced().getType().equals(Material.BRICK)) return;
         if(event.getBlockPlaced() != null
-                && playerBox.isIntersected(placeArea)) {
+                && playerBox.isIntersected(placeArea)
+                && event.getBlockPlaced().getType().equals(Material.BRICK)) {
             if(event.isCancelled()) event.setCancelled(false);
             event.getPlayer().getItemInHand().setAmount(5);
             event.getPlayer().updateInventory();
