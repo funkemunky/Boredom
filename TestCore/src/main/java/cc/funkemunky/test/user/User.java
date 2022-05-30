@@ -1,11 +1,8 @@
 package cc.funkemunky.test.user;
 
-import cc.funkemunky.api.utils.Setting;
 import cc.funkemunky.api.utils.TickTimer;
 import cc.funkemunky.api.utils.math.RollingAverageDouble;
-import cc.funkemunky.api.utils.menu.preset.button.SettingButton;
 import lombok.RequiredArgsConstructor;
-import lombok.val;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -21,71 +18,33 @@ public class User {
     public Map<String, Float> violations = new HashMap<>();
     public long lastClick, inventoryStart;
     public RollingAverageDouble cpsAvg = new RollingAverageDouble(10, 0);
-    private boolean cancelling, allowingKick, noDamage, noHunger;
     private TickTimer lastDbCheck = new TickTimer(40);
     public ItemStack[] previousInventoryContents;
+    private Player player;
 
     public static User getUser(UUID uuid) {
         return users.computeIfAbsent(uuid, key -> new User(uuid));
     }
 
     public boolean isAllowingCancel() {
-        if(lastDbCheck.hasPassed()) {
-            Player player = Bukkit.getPlayer(uuid);
-
-            if(player != null) {
-                this.cancelling = Settings.allowKauriCancel.getValue(player);
-                this.allowingKick = Settings.allowKauriKicking.getValue(player);
-                this.noDamage = Settings.noDamage.getValue(player);
-                this.noHunger = Settings.noHunger.getValue(player);
-            }
-            lastDbCheck.reset();
-        }
-        return this.cancelling;
+        return Settings.allowKauriCancel.getValue(getPlayer());
     }
 
     public boolean isNoDamage() {
-        if(lastDbCheck.hasPassed()) {
-            Player player = Bukkit.getPlayer(uuid);
-
-            if(player != null) {
-                this.cancelling = Settings.allowKauriCancel.getValue(player);
-                this.allowingKick = Settings.allowKauriKicking.getValue(player);
-                this.noDamage = Settings.noDamage.getValue(player);
-                this.noHunger = Settings.noHunger.getValue(player);
-            }
-            lastDbCheck.reset();
-        }
-        return this.noDamage;
+        return Settings.noDamage.getValue(getPlayer());
     }
 
     public boolean isNoHunger() {
-        if(lastDbCheck.hasPassed()) {
-            Player player = Bukkit.getPlayer(uuid);
-
-            if(player != null) {
-                this.cancelling = Settings.allowKauriCancel.getValue(player);
-                this.allowingKick = Settings.allowKauriKicking.getValue(player);
-                this.noDamage = Settings.noDamage.getValue(player);
-                this.noHunger = Settings.noHunger.getValue(player);
-            }
-            lastDbCheck.reset();
-        }
-        return this.noHunger;
+        return Settings.noHunger.getValue(getPlayer());
     }
 
     public boolean isAllowingKick() {
-        if(lastDbCheck.hasPassed()) {
-            Player player = Bukkit.getPlayer(uuid);
+        return Settings.allowKauriKicking.getValue(getPlayer());
+    }
 
-            if(player != null) {
-                this.cancelling = Settings.allowKauriCancel.getValue(player);
-                this.allowingKick = Settings.allowKauriKicking.getValue(player);
-                this.noDamage = Settings.noDamage.getValue(player);
-                this.noHunger = Settings.noHunger.getValue(player);
-            }
-            lastDbCheck.reset();
-        }
-        return this.allowingKick;
+    public Player getPlayer() {
+        this.player = Bukkit.getPlayer(uuid);
+
+        return player;
     }
 }

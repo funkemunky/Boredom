@@ -1,6 +1,5 @@
 package cc.funkemunky.test.listeners;
 
-import cc.funkemunky.api.events.Listen;
 import cc.funkemunky.test.TestCore;
 import cc.funkemunky.test.user.User;
 import dev.brighten.api.KauriAPI;
@@ -10,9 +9,6 @@ import dev.brighten.api.event.KauriEvent;
 import dev.brighten.api.event.result.CancelResult;
 import dev.brighten.api.event.result.FlagResult;
 import dev.brighten.api.event.result.PunishResult;
-import dev.brighten.api.listener.KauriCancelEvent;
-import dev.brighten.api.listener.KauriFlagEvent;
-import dev.brighten.api.listener.KauriPunishEvent;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;

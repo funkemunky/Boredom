@@ -2,13 +2,11 @@ package cc.funkemunky.test.listeners;
 
 import cc.funkemunky.api.utils.Color;
 import cc.funkemunky.api.utils.Init;
-import cc.funkemunky.api.utils.JsonMessage;
 import cc.funkemunky.api.utils.RunUtils;
 import cc.funkemunky.test.TestCore;
 import cc.funkemunky.test.user.Settings;
 import me.tigerhix.lib.scoreboard.type.Scoreboard;
 import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
