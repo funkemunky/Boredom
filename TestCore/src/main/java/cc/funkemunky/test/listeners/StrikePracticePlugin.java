@@ -4,6 +4,8 @@ import cc.funkemunky.api.utils.Color;
 import cc.funkemunky.api.utils.ConfigSetting;
 import cc.funkemunky.api.utils.MiscUtils;
 import cc.funkemunky.test.TestCore;
+import cc.funkemunky.test.user.User;
+import cc.funkemunky.test.user.WrappedFight;
 import dev.brighten.spigot.knockback.KnockbackModule;
 import dev.brighten.spigot.knockback.KnockbackProfile;
 import ga.strikepractice.StrikePracticeAPI;
@@ -52,6 +54,10 @@ public class StrikePracticePlugin implements Listener {
                         getProfileByKit(e.getFight().getKit())) :  getProfileByKit(e.getFight().getKit()));
             }
         }.runTaskLater(TestCore.INSTANCE, 2L);
+
+        User user = User.getUser(e.getPlayer().getUniqueId());
+
+        user.setFight(new WrappedFight(e.getFight(), event.getBot()));
     }
 
     @EventHandler
@@ -67,22 +73,37 @@ public class StrikePracticePlugin implements Listener {
                 }
             }
         }.runTaskLater(TestCore.INSTANCE, 2L);
+
+        User user = User.getUser(e.getPlayer().getUniqueId());
+        user.setFight(null);
     }
 
     @EventHandler
     public void onStrike(DuelStartEvent event) {
         ((CraftPlayer) event.getPlayer1()).getHandle().setKnockback(getProfileByKit(event.getFight().getKit()));
         ((CraftPlayer) event.getPlayer2()).getHandle().setKnockback(getProfileByKit(event.getFight().getKit()));
+
+        User user1 = User.getUser(event.getPlayer1().getUniqueId()),
+                user2 = User.getUser(event.getPlayer2().getUniqueId());
+
+        user1.setFight(new WrappedFight(event.getFight(), event.getPlayer2()));
+        user2.setFight(new WrappedFight(event.getFight(), event.getPlayer1()));
     }
 
     @EventHandler
     public void onStrike(DuelEndEvent event) {
         ((CraftPlayer) event.getWinner()).getHandle().setKnockback(KnockbackModule.getProfile());
         ((CraftPlayer) event.getLoser()).getHandle().setKnockback(KnockbackModule.getProfile());
+
+        User user1 = User.getUser(event.getWinner().getUniqueId()),
+                user2 = User.getUser(event.getLoser().getUniqueId());
+
+        user1.setFight(null);
+        user2.setFight(null);
     }
 
     public KnockbackProfile getProfileByKit(BattleKit kit) {
         return KnockbackModule.INSTANCE.profiles
-                .getOrDefault(kit.getName(), KnockbackModule.getProfile());
+                .getOrDefault(kit.getName().toLowerCase(), KnockbackModule.getProfile());
     }
 }

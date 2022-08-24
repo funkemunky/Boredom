@@ -12,12 +12,15 @@ import cc.funkemunky.test.db.Mongo;
 import cc.funkemunky.test.handlers.SpeedTestHandler;
 import cc.funkemunky.test.handlers.TestResult;
 import cc.funkemunky.test.listeners.CheatListeners;
+import cc.funkemunky.test.listeners.CheatListenersAnticheat;
 import cc.funkemunky.test.listeners.ScaffoldListeners;
 import cc.funkemunky.test.listeners.StrikePracticePlugin;
+import cc.funkemunky.test.user.Opponent;
 import cc.funkemunky.test.user.Settings;
 import cc.funkemunky.test.user.User;
 import cc.funkemunky.test.utils.ConfigSettings;
 import cc.funkemunky.test.utils.StringUtil;
+import dev.brighten.ac.api.AnticheatAPI;
 import dev.brighten.api.KauriAPI;
 import me.tigerhix.lib.scoreboard.ScoreboardLib;
 import me.tigerhix.lib.scoreboard.common.EntryBuilder;
@@ -45,6 +48,7 @@ public class TestCore extends JavaPlugin {
     public Plugin kauri;
     public Mongo database;
     private CheatListeners listeners;
+    private CheatListenersAnticheat listeners2;
     //Lag Information
     public RollingAverageDouble tps = new RollingAverageDouble(4, 20);
     public long lastTick;
@@ -56,6 +60,8 @@ public class TestCore extends JavaPlugin {
         MiscUtils.printToConsole("Running scanner...");
         Atlas.getInstance().initializeScanner(this, true, true);
 
+        runTpsTask();
+
         MiscUtils.printToConsole("Loading Mongo...");
         database = new Mongo();
 
@@ -64,6 +70,16 @@ public class TestCore extends JavaPlugin {
                         && Bukkit.getPluginManager().isPluginEnabled("Kauri"))) {
             MiscUtils.printToConsole("Kauri enabled! Loading Kauri Test server specific things...");
             listeners = new CheatListeners();
+            ScoreboardLib.setPluginInstance(this);
+            for(Player player : Bukkit.getOnlinePlayers()) {
+                Scoreboard scoreboard = getScoreboard(player);
+                scoreboard.activate();
+                scoreboardMap.put(player.getUniqueId(), scoreboard);
+            }
+        } else if(kauriEnabled = ((kauri = Bukkit.getPluginManager().getPlugin("Anticheat")) != null
+                && Bukkit.getPluginManager().isPluginEnabled("Anticheat"))) {
+            MiscUtils.printToConsole("Enterprise Anticheat enabled! Loading Kauri Test server specific things...");
+            listeners2 = new CheatListenersAnticheat();
             ScoreboardLib.setPluginInstance(this);
             for(Player player : Bukkit.getOnlinePlayers()) {
                 Scoreboard scoreboard = getScoreboard(player);
@@ -110,12 +126,21 @@ public class TestCore extends JavaPlugin {
                 lastTimeStamp.set(currentTime);
             }
             lastTick = currentTime;
+
+            for (User user : User.users.values()) {
+                if(currentTime - user.lastClick > 3000L && user.cpsAvg.getAverage() > 0) {
+                    user.cpsAvg.add(0.00001);
+                }
+            }
         }, this, 1L, 1L);
     }
 
     public void onDisable() {
         if(listeners != null) {
             KauriAPI.INSTANCE.unregisterEvents(this);
+        }
+        if(listeners2 != null) {
+            AnticheatAPI.INSTANCE.unregisterEvents(this);
         }
         ScaffoldListeners.reset();
         runBungeeStuff();
@@ -129,7 +154,7 @@ public class TestCore extends JavaPlugin {
         Scoreboard board = ScoreboardLib.createScoreboard(player).setHandler(new ScoreboardHandler() {
 
             private final HighlightedString testServer = new HighlightedString(ToggleScoreboard.devServer
-                    ? "Kauri Dev Server" : "Kauri Test Server", "&f&l", "&7&l");
+                    ? "Dev Server" : "Test Server", "&f&l", "&7&l");
 
             @Override
             public String getTitle(Player player) {
@@ -142,11 +167,32 @@ public class TestCore extends JavaPlugin {
                     User user = User.getUser(player.getUniqueId());
                     EntryBuilder builder = new EntryBuilder()
                             .next(MiscUtils.line(ChatColor.RESET.toString() + Color.Dark_Gray).substring(0, 30))
-                            .next("&6&lLag Information")
+                            .next("&6&lInformation")
                             .next("&8» &ePing&7: &f" + player.spigot().getPing())
                             .next("&8» &eTPS&7: &f" + MathUtils.round(tps.getAverage(), 2))
-                            .blank()
-                            .next("&6&lViolations");
+                            .next(String.format("&8» &eCPS&7: &f%.1f", user.cpsAvg.getAverage())).blank();
+
+                    if(user.getFight() != null) {
+                        builder.next("&6&lFight")
+                                .next("&8» &eKit&7: &f" + user.getFight().getKitName())
+                                .next("&8» &eArena&7: &f" + user.getFight().getArenaName())
+                                .next("&8» &eDuration&7: &f" + user.getFight().getFormattedDuration());
+
+                        if(user.getFight().getOpponents().size() == 1) {
+                            Opponent opponent = user.getFight().getOpponents().get(0);
+
+                            builder.next("&8» &eOpponent&7: &f" + opponent.getName())
+                                    .blank();
+                        } else {
+                            builder.next("&8» &eOpponents&7:");
+                            for (Opponent opponent : user.getFight().getOpponents()) {
+                                builder.next("  &7»» &f" + opponent.getName());
+                            }
+                            builder.blank();
+                        }
+                    }
+
+                    builder.next("&6&lViolations");
                     if(user.violations.size() == 0) {
                         builder.next("&8» &fNone");
                     } else {
@@ -188,7 +234,7 @@ public class TestCore extends JavaPlugin {
                 }
                 return new EntryBuilder().blank().next("&cError. Check console").build();
             }
-        }).setUpdateInterval(4);
+        }).setUpdateInterval(2);
 
         scoreboardMap.put(player.getUniqueId(), board);
         return board;

@@ -1,9 +1,12 @@
 package cc.funkemunky.test.listeners;
 
+import cc.funkemunky.api.Atlas;
+import cc.funkemunky.api.tinyprotocol.api.Packet;
 import cc.funkemunky.api.utils.Color;
 import cc.funkemunky.api.utils.Init;
 import cc.funkemunky.api.utils.RunUtils;
 import cc.funkemunky.api.utils.msg.ChatBuilder;
+import cc.funkemunky.test.TestCore;
 import cc.funkemunky.test.commands.LockdownMode;
 import cc.funkemunky.test.user.User;
 import org.bukkit.Bukkit;
@@ -25,6 +28,10 @@ public class GeneralListeners implements Listener {
 
     public GeneralListeners() {
         RunUtils.taskTimer(() -> Bukkit.getWorlds().forEach(world -> world.setTime(8000L)), 10L, 4L);
+
+        Atlas.getInstance().getPacketProcessor().process(TestCore.INSTANCE, event -> {
+
+        }, Packet.Client.ARM_ANIMATION, Packet.Client.FLYING);
     }
 
     @EventHandler
@@ -106,7 +113,7 @@ public class GeneralListeners implements Listener {
             long delta = (timeStamp - user.lastClick);
 
             if(user.lastClick > 0) {
-                user.cpsAvg.add(50D / delta);
+                user.cpsAvg.add(1000D / delta);
             }
 
             user.lastClick = timeStamp;
