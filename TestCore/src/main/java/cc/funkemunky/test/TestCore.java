@@ -76,9 +76,9 @@ public class TestCore extends JavaPlugin {
                 scoreboard.activate();
                 scoreboardMap.put(player.getUniqueId(), scoreboard);
             }
-        } else if(kauriEnabled = ((kauri = Bukkit.getPluginManager().getPlugin("Anticheat")) != null
-                && Bukkit.getPluginManager().isPluginEnabled("Anticheat"))) {
-            MiscUtils.printToConsole("Enterprise Anticheat enabled! Loading Kauri Test server specific things...");
+        } else if(kauriEnabled = ((kauri = Bukkit.getPluginManager().getPlugin("EnterpriseLoader")) != null
+                && Bukkit.getPluginManager().isPluginEnabled("EnterpriseLoader"))) {
+            MiscUtils.printToConsole("Enterprise Anticheat enabled! Loading Anticheat Test server specific things...");
             listeners2 = new CheatListenersAnticheat();
             ScoreboardLib.setPluginInstance(this);
             for(Player player : Bukkit.getOnlinePlayers()) {

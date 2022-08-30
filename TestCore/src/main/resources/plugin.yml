@@ -3,4 +3,4 @@ main: cc.funkemunky.test.TestCore
 author: funkemunky
 version: ${project.version}
 depend: [Atlas, Citizens]
-softdepend: [KauriLoader, Kauri, StrikePractice, Anticheat]
+softdepend: [KauriLoader, Kauri, StrikePractice, Anticheat, EnterpriseLoader]
