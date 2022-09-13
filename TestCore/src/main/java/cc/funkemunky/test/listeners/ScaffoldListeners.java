@@ -12,6 +12,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import java.util.HashMap;
@@ -26,20 +27,19 @@ public class ScaffoldListeners implements Listener {
     //135 108 387 107 125 355
 
     private static SimpleCollisionBox placeArea = new SimpleCollisionBox(
-            100,107,353, 135.99,125,387.99);
+            161,107,343, 207,153,400.99);
 
     private static Map<Block, Long> blocksPlaced = new ConcurrentHashMap<>();
     private static Map<UUID, ItemStack[]> playerInventory = new HashMap<>();
     private static World world;
 
-    @ConfigSetting(path = "build", name = "one")
-    private Vector firstLoc = new Vector(100,107,353);
+    private static Vector firstLoc = new Vector(161,107,343);
 
-    @ConfigSetting(path = "build", name = "two")
-    private Vector secondLoc = new Vector(135.99,125,387.99);
+    private static Vector secondLoc = new Vector(207,153,400.99);
 
     public ScaffoldListeners() {
         world = Bukkit.getWorld("world");
+        placeArea = new SimpleCollisionBox(firstLoc, secondLoc);
         for (Block block : Helper.getBlocksNearby2(world, placeArea, Materials.SOLID)) {
             if(!block.getType().equals(Material.BRICK)) continue;
 
@@ -55,8 +55,6 @@ public class ScaffoldListeners implements Listener {
                         blocksPlaced.remove(key);
                     });
         }, 100L, 40L);
-
-        placeArea = new SimpleCollisionBox(firstLoc, secondLoc);
     }
 
     @EventHandler(priority = EventPriority.HIGH)
