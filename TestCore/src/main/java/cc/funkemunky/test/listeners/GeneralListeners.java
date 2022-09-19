@@ -15,6 +15,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityTargetEvent;
@@ -42,6 +43,13 @@ public class GeneralListeners implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onEvent(WeatherChangeEvent e) {
         e.setCancelled(true);
+    }
+
+    @EventHandler(priority = EventPriority.HIGH)
+    public void onEvent(BlockBreakEvent event) {
+        if(!event.getPlayer().isOp()) {
+            event.setCancelled(true);
+        }
     }
 
     @EventHandler

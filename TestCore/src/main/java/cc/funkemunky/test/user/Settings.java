@@ -67,7 +67,7 @@ public class Settings {
                 .updateOne(Filters.eq("uuid", pl.getUniqueId().toString()),
                         Updates.set("noDamage", enabled));
         cache.refresh(pl.getUniqueId());
-    }, true, false);
+    }, false, true);
     public static Setting<Boolean> noHunger = new Setting<>("noHunger",
             (pl) -> getStructureSet(pl.getUniqueId()).getBoolean("noHunger"), (pl, enabled) -> {
         Document set = getStructureSet(pl.getUniqueId());
