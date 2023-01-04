@@ -87,7 +87,7 @@ public class TestCore extends JavaPlugin {
                 scoreboardMap.put(player.getUniqueId(), scoreboard);
             }
         }
-        if(Bukkit.getPluginManager().getPlugin("StrikePractice") != null) {
+        if(Bukkit.getPluginManager().getPlugin("StrikePractice") != null || Bukkit.getPluginManager().getPlugin("tPractice") != null) {
             try {
                 Class.forName("dev.brighten.spigot.knockback.KnockbackProfile");
                 Bukkit.getPluginManager().registerEvents(new StrikePracticePlugin(), this);
