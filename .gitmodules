@@ -1,0 +1,3 @@
+[submodule "ScoreboardLib"]
+	path = ScoreboardLib
+	url = https://github.com/funkemunky/ScoreboardLib

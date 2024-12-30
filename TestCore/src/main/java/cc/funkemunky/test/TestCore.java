@@ -21,7 +21,6 @@ import cc.funkemunky.test.user.User;
 import cc.funkemunky.test.utils.ConfigSettings;
 import cc.funkemunky.test.utils.StringUtil;
 import dev.brighten.ac.api.AnticheatAPI;
-import dev.brighten.api.KauriAPI;
 import me.tigerhix.lib.scoreboard.ScoreboardLib;
 import me.tigerhix.lib.scoreboard.common.EntryBuilder;
 import me.tigerhix.lib.scoreboard.common.animate.HighlightedString;
@@ -67,7 +66,7 @@ public class TestCore extends JavaPlugin {
 
         if(kauriEnabled =
                 ((kauri = Bukkit.getPluginManager().getPlugin("Kauri")) != null
-                        && Bukkit.getPluginManager().isPluginEnabled("Kauri"))) {
+                        && Bukkit.getPluginManager().isPluginEnabled("Kauri")) && Double.parseDouble(Bukkit.getPluginManager().getPlugin("Kauri").getDescription().getVersion()) < 3.0) {
             MiscUtils.printToConsole("Kauri enabled! Loading Kauri Test server specific things...");
             listeners = new CheatListeners();
             ScoreboardLib.setPluginInstance(this);
@@ -76,8 +75,8 @@ public class TestCore extends JavaPlugin {
                 scoreboard.activate();
                 scoreboardMap.put(player.getUniqueId(), scoreboard);
             }
-        } else if(kauriEnabled = ((kauri = Bukkit.getPluginManager().getPlugin("EnterpriseLoader")) != null
-                && Bukkit.getPluginManager().isPluginEnabled("EnterpriseLoader"))) {
+        } else if(kauriEnabled = ((kauri = Bukkit.getPluginManager().getPlugin("Kauri")) != null
+                && Bukkit.getPluginManager().isPluginEnabled("Kauri"))) {
             MiscUtils.printToConsole("Enterprise Anticheat enabled! Loading Anticheat Test server specific things...");
             listeners2 = new CheatListenersAnticheat();
             ScoreboardLib.setPluginInstance(this);
@@ -137,7 +136,7 @@ public class TestCore extends JavaPlugin {
 
     public void onDisable() {
         if(listeners != null) {
-            KauriAPI.INSTANCE.unregisterEvents(this);
+            AnticheatAPI.INSTANCE.unregisterEvents(this);
         }
         if(listeners2 != null) {
             AnticheatAPI.INSTANCE.unregisterEvents(this);

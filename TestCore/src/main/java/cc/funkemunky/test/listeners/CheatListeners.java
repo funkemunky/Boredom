@@ -2,13 +2,12 @@ package cc.funkemunky.test.listeners;
 
 import cc.funkemunky.test.TestCore;
 import cc.funkemunky.test.user.User;
-import dev.brighten.api.KauriAPI;
-import dev.brighten.api.check.CancelType;
-import dev.brighten.api.check.KauriCheck;
-import dev.brighten.api.event.KauriEvent;
-import dev.brighten.api.event.result.CancelResult;
-import dev.brighten.api.event.result.FlagResult;
-import dev.brighten.api.event.result.PunishResult;
+import dev.brighten.ac.api.AnticheatAPI;
+import dev.brighten.ac.api.check.ECheck;
+import dev.brighten.ac.api.event.AnticheatEvent;
+import dev.brighten.ac.api.event.result.CancelResult;
+import dev.brighten.ac.api.event.result.FlagResult;
+import dev.brighten.ac.api.event.result.PunishResult;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -19,12 +18,12 @@ import org.github.paperspigot.Title;
 
 import java.util.List;
 
-public class CheatListeners implements KauriEvent {
+public class CheatListeners implements AnticheatEvent {
 
     private static final TextComponent kickTitle;
 
     public CheatListeners() {
-        KauriAPI.INSTANCE.registerEvent(TestCore.INSTANCE, this);
+        AnticheatAPI.INSTANCE.registerEvent(TestCore.INSTANCE, this);
     }
 
     static {
@@ -33,7 +32,7 @@ public class CheatListeners implements KauriEvent {
     }
 
     @Override
-    public PunishResult onPunish(Player player, KauriCheck check, String broadcastMessage, List<String> list,
+    public PunishResult onPunish(Player player, ECheck check, List<String> commands,
                                  boolean cancelled) {
         if(!User.getUser(player.getUniqueId()).isAllowingKick()) {
             final Title title = new Title(new BaseComponent[]{kickTitle},
@@ -46,7 +45,7 @@ public class CheatListeners implements KauriEvent {
     }
 
     @Override
-    public FlagResult onFlag(Player player, KauriCheck check, String information, boolean cancelled) {
+    public FlagResult onFlag(Player player, ECheck check, String information, boolean cancelled) {
         User user = User.getUser(player.getUniqueId());
 
         if(!user.violations.containsKey(check.getName())) {
@@ -59,7 +58,7 @@ public class CheatListeners implements KauriEvent {
     }
 
     @Override
-    public CancelResult onCancel(Player player, CancelType cancelType, boolean cancelled) {
+    public CancelResult onCancel(Player player, ECheck check, boolean cancelled) {
         return CancelResult.builder().cancelled(!User.getUser(player.getUniqueId()).isAllowingCancel()).build();
     }
 
