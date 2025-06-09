@@ -3,4 +3,5 @@ main: cc.funkemunky.test.TestCore
 author: funkemunky
 version: ${project.version}
 depend: [Atlas, Citizens]
+api-version: '1.19'
 softdepend: [KauriLoader, Kauri, StrikePractice, tPractice, EnterpriseLoader]

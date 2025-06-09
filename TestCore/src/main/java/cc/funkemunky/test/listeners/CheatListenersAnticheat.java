@@ -5,6 +5,7 @@ import cc.funkemunky.api.utils.MathUtils;
 import cc.funkemunky.api.utils.MiscUtils;
 import cc.funkemunky.test.TestCore;
 import cc.funkemunky.test.user.User;
+import com.destroystokyo.paper.Title;
 import dev.brighten.ac.api.AnticheatAPI;
 import dev.brighten.ac.api.check.ECheck;
 import dev.brighten.ac.api.event.AnticheatEvent;
@@ -15,7 +16,6 @@ import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventPriority;
-import org.github.paperspigot.Title;
 
 import java.util.ArrayList;
 import java.util.List;

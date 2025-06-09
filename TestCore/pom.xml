@@ -58,6 +58,10 @@
             <id>funkemunky-releases</id>
             <url>https://nexus.funkemunky.cc/content/repositories/releases/</url>
         </repository>
+        <repository>
+            <id>papermc</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -86,9 +90,15 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.github.fspigot</groupId>
-            <artifactId>fspigot</artifactId>
-            <version>1.8.8</version>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>1.19.4-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.github.paperspigot</groupId>
+            <artifactId>1.13.2</artifactId>
+            <version>1.13.2</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

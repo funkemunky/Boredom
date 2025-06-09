@@ -65,7 +65,7 @@ public class GeneralListeners implements Listener {
         if(event.getDamager() instanceof Player && event.getEntity() instanceof Player) {
             Player attacker = (Player) event.getDamager();
 
-            if(StrikePracticePlugin.notInTestMap(attacker)) return;
+            if(StrikePracticePlugin.INSTANCE != null && StrikePracticePlugin.notInTestMap(attacker)) return;
 
             User user = User.getUser(attacker.getUniqueId());
 
@@ -87,7 +87,7 @@ public class GeneralListeners implements Listener {
         if(event.getEntity() instanceof Player) {
             Player attacker = (Player) event.getEntity();
 
-            if(StrikePracticePlugin.notInTestMap(attacker)) return;
+            if(StrikePracticePlugin.INSTANCE != null && StrikePracticePlugin.notInTestMap(attacker)) return;
 
             User user = User.getUser(attacker.getUniqueId());
 
@@ -102,7 +102,7 @@ public class GeneralListeners implements Listener {
         if(event.getEntity() instanceof Player) {
             Player player = (Player) event.getEntity();
 
-            if(StrikePracticePlugin.notInTestMap(player)) return;
+            if(StrikePracticePlugin.INSTANCE != null && StrikePracticePlugin.notInTestMap(player)) return;
 
             User user = User.getUser(player.getUniqueId());
 

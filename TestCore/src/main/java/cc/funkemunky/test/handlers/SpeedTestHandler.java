@@ -48,7 +48,7 @@ public class SpeedTestHandler implements Listener {
         if(event.getAction().equals(Action.RIGHT_CLICK_BLOCK)
                 && !testResultsMap.containsKey(event.getPlayer().getUniqueId())
                 && event.getClickedBlock() != null
-                && event.getClickedBlock().getType().equals(Material.WALL_SIGN)) {
+                && event.getClickedBlock().getType().name().toLowerCase().contains("sign")) {
             Sign sign = (Sign) event.getClickedBlock().getState();
 
             if(sign.getLines().length >= 2 && sign.getLine(0).equals(Color.Red + "[SpeedTest]")) {
@@ -93,7 +93,7 @@ public class SpeedTestHandler implements Listener {
                 }
             }
         } else if(event.getAction().equals(Action.PHYSICAL)
-                && event.getClickedBlock().getType() == Material.STONE_PLATE
+                && event.getClickedBlock().getType() == Material.STONE_PRESSURE_PLATE
                 && testResultsMap.containsKey(event.getPlayer().getUniqueId())) {
             TestResult result = testResultsMap.get(event.getPlayer().getUniqueId());
 

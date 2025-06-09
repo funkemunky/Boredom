@@ -32,23 +32,21 @@ public class ChestStealListeners implements Listener {
         if(event.getInventory().getHolder() instanceof DoubleChest) {
             DoubleChest chest = (DoubleChest) event.getInventory().getHolder();
 
-            if(chest.getInventory().getName().equals("ChestSteal Test") ) {
-                User user = User.getUser(event.getPlayer().getUniqueId());
+            User user = User.getUser(event.getPlayer().getUniqueId());
 
-                if(user == null) return;
+            if(user == null) return;
 
-                ItemStack[] stack = new ItemStack[chest.getInventory().getSize()];
+            ItemStack[] stack = new ItemStack[chest.getInventory().getSize()];
 
-                for (int i = 0; i < stack.length; i++) {
-                    stack[i] = itemsToPutInChest
-                            .get(ThreadLocalRandom.current().nextInt(0, itemsToPutInChest.size() - 1));
-                }
-
-                user.previousInventoryContents = event.getPlayer().getInventory().getContents();
-                chest.getInventory().setContents(stack);
-                event.getPlayer().getInventory().clear();
-                user.inventoryStart = System.currentTimeMillis();
+            for (int i = 0; i < stack.length; i++) {
+                stack[i] = itemsToPutInChest
+                        .get(ThreadLocalRandom.current().nextInt(0, itemsToPutInChest.size() - 1));
             }
+
+            user.previousInventoryContents = event.getPlayer().getInventory().getContents();
+            chest.getInventory().setContents(stack);
+            event.getPlayer().getInventory().clear();
+            user.inventoryStart = System.currentTimeMillis();
         }
     }
 

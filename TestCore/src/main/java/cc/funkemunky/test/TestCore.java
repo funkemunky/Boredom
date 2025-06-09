@@ -69,23 +69,19 @@ public class TestCore extends JavaPlugin {
                         && Bukkit.getPluginManager().isPluginEnabled("Kauri")) && Double.parseDouble(Bukkit.getPluginManager().getPlugin("Kauri").getDescription().getVersion()) < 3.0) {
             MiscUtils.printToConsole("Kauri enabled! Loading Kauri Test server specific things...");
             listeners = new CheatListeners();
-            ScoreboardLib.setPluginInstance(this);
-            for(Player player : Bukkit.getOnlinePlayers()) {
-                Scoreboard scoreboard = getScoreboard(player);
-                scoreboard.activate();
-                scoreboardMap.put(player.getUniqueId(), scoreboard);
-            }
         } else if(kauriEnabled = ((kauri = Bukkit.getPluginManager().getPlugin("Kauri")) != null
                 && Bukkit.getPluginManager().isPluginEnabled("Kauri"))) {
             MiscUtils.printToConsole("Enterprise Anticheat enabled! Loading Anticheat Test server specific things...");
             listeners2 = new CheatListenersAnticheat();
-            ScoreboardLib.setPluginInstance(this);
-            for(Player player : Bukkit.getOnlinePlayers()) {
-                Scoreboard scoreboard = getScoreboard(player);
-                scoreboard.activate();
-                scoreboardMap.put(player.getUniqueId(), scoreboard);
-            }
         }
+
+        ScoreboardLib.setPluginInstance(this);
+        for(Player player : Bukkit.getOnlinePlayers()) {
+            Scoreboard scoreboard = getScoreboard(player);
+            scoreboard.activate();
+            scoreboardMap.put(player.getUniqueId(), scoreboard);
+        }
+
         if(Bukkit.getPluginManager().getPlugin("StrikePractice") != null || Bukkit.getPluginManager().getPlugin("tPractice") != null) {
             try {
                 Class.forName("dev.brighten.spigot.knockback.KnockbackProfile");
