@@ -41,7 +41,7 @@ public class ScaffoldListeners implements Listener {
         world = Bukkit.getWorld("world");
         placeArea = new SimpleCollisionBox(firstLoc, secondLoc);
         for (Block block : Helper.getBlocksNearby2(world, placeArea, Materials.SOLID)) {
-            if(!block.getType().equals(Material.BRICK)) continue;
+            if(!block.getType().equals(Material.BRICKS)) continue;
 
             block.setType(Material.AIR);
         }
@@ -63,7 +63,7 @@ public class ScaffoldListeners implements Listener {
                 0.05, 1.8);
         if(event.getBlockPlaced() != null
                 && playerBox.isIntersected(placeArea)
-                && event.getBlockPlaced().getType().equals(Material.BRICK)) {
+                && event.getBlockPlaced().getType().equals(Material.BRICKS)) {
             if(event.isCancelled()) event.setCancelled(false);
             event.getPlayer().getItemInHand().setAmount(5);
             event.getPlayer().updateInventory();
@@ -80,7 +80,7 @@ public class ScaffoldListeners implements Listener {
                 playerInventory.put(event.getPlayer().getUniqueId(), event.getPlayer().getInventory().getContents());
 
                 event.getPlayer().getInventory().clear();
-                event.getPlayer().getInventory().addItem(new ItemStack(Material.BRICK, 5));
+                event.getPlayer().getInventory().addItem(new ItemStack(Material.BRICKS, 5));
             }
         } else if(playerInventory.containsKey(event.getPlayer().getUniqueId())) {
             event.getPlayer().getInventory().setContents(playerInventory.get(event.getPlayer().getUniqueId()));
@@ -91,7 +91,7 @@ public class ScaffoldListeners implements Listener {
 
     public static void reset() {
         for (Block block : Helper.getBlocksNearby2(world, placeArea, Materials.SOLID)) {
-            if(!block.getType().equals(Material.BRICK)) continue;
+            if(!block.getType().equals(Material.BRICKS)) continue;
             block.setType(Material.AIR);
         }
         blocksPlaced.clear();
