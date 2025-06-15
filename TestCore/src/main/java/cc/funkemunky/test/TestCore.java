@@ -131,18 +131,21 @@ public class TestCore extends JavaPlugin {
     }
 
     public void onDisable() {
-        if(listeners != null) {
+        if(listeners != null || listeners2 != null) {
             AnticheatAPI.INSTANCE.unregisterEvents(this);
-        }
-        if(listeners2 != null) {
-            AnticheatAPI.INSTANCE.unregisterEvents(this);
+            listeners = null;
+            listeners2 = null;
         }
         ScaffoldListeners.reset();
         runBungeeStuff();
         scoreboardMap.clear();
+        kauri = null;
+        database = null;
+
         HandlerList.unregisterAll(this);
         Atlas.getInstance().getCommandManager(this).unregisterCommands();
         Bukkit.getScheduler().cancelTasks(this);
+        INSTANCE = null;
     }
 
     public Scoreboard getScoreboard(Player player) {
@@ -197,7 +200,7 @@ public class TestCore extends JavaPlugin {
                                 forEach(vl -> {
                                     builder.next("&8» &f"
                                             + vl
-                                            + " &7(&c" + MathUtils.round(user.violations.get(vl), 2) + "&7)");
+                                            + " &7(&c" + String.valueOf(MathUtils.round(user.violations.get(vl), 2)).replace(".", "&c.") + "&7)");
                                 });
                         if(user.violations.size() > 5) {
                             builder.next("&7&o*More Violations*");
@@ -211,9 +214,9 @@ public class TestCore extends JavaPlugin {
                         if(tr.startTime == 0) {
                             builder.next(Color.Red + Color.Italics + "Starting...");
                         } else {
-                            builder.next(String.format("&8» &7Average BPS: &f%.3f", tr.average.getAverage()));
-                            builder.next(String.format("&8» &7Time Elapsed: &f" + StringUtil
-                                    .formatDuration(System.currentTimeMillis() - tr.startTime)));
+                            builder.next(String.format("&8» &7Average BPS: &f%s", String.valueOf(MathUtils.round(tr.average.getAverage(), 3)).replace(".", "&f")));
+                            builder.next("&8» &7Time Elapsed: &f" + StringUtil
+                                    .formatDuration(System.currentTimeMillis() - tr.startTime));
                         };
                     }
 

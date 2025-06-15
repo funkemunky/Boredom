@@ -21,6 +21,7 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 @Init
 public class ScaffoldListeners implements Listener {
@@ -95,14 +96,18 @@ public class ScaffoldListeners implements Listener {
             block.setType(Material.AIR);
         }
         blocksPlaced.clear();
-        playerInventory.keySet().stream()
+        var uuids = playerInventory.keySet().stream()
                 .map(Bukkit::getPlayer)
                 .filter(Objects::nonNull)
-                .forEach(player -> {
+                .map(player -> {
                     player.getInventory().setContents(playerInventory.get(player.getUniqueId()));
                     player.updateInventory();
-                    playerInventory.remove(player.getUniqueId());
-                });
+                    return player.getUniqueId();
+                }).toList();
+
+        for (UUID uuid : uuids) {
+            playerInventory.remove(uuid);
+        }
 
     }
 }
