@@ -22,16 +22,17 @@ import java.util.concurrent.TimeUnit;
 @Init
 public class ChestStealListeners implements Listener {
 
-    private static List<ItemStack> itemsToPutInChest = Arrays.asList(
+    private static final List<ItemStack> itemsToPutInChest = Arrays.asList(
             new ItemStack(Material.DIAMOND_CHESTPLATE, 1), new ItemStack(Material.IRON_LEGGINGS, 1),
             new ItemStack(Material.STONE_SWORD), new ItemStack(Material.COOKED_CHICKEN, 1),
             new ItemStack(Material.COOKED_BEEF, 1));
 
     @EventHandler
     public void onEvent(InventoryOpenEvent event) {
-        if(event.getInventory().getHolder() instanceof DoubleChest) {
-            DoubleChest chest = (DoubleChest) event.getInventory().getHolder();
+        if(!(event.getPlayer() instanceof Player player)) return;
 
+        if(StrikePracticePlugin.INSTANCE != null && StrikePracticePlugin.notInTestMap(player)) return;
+        if(event.getInventory().getHolder() instanceof DoubleChest chest) {
             User user = User.getUser(event.getPlayer().getUniqueId());
 
             if(user == null) return;
@@ -52,11 +53,11 @@ public class ChestStealListeners implements Listener {
 
     @EventHandler
     public void onEvent(InventoryCloseEvent event) {
+        if(!(event.getPlayer() instanceof Player player)) return;
+
+        if(StrikePracticePlugin.INSTANCE != null && StrikePracticePlugin.notInTestMap(player)) return;
+
         User user = User.getUser(event.getPlayer().getUniqueId());
-
-        assert event.getPlayer() instanceof Player;
-
-        Player player = (Player) event.getPlayer();
 
         if(user != null && user.inventoryStart != 0) {
             long delta = System.currentTimeMillis() - user.inventoryStart;
