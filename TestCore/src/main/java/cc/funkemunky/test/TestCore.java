@@ -241,7 +241,7 @@ public class TestCore extends JavaPlugin {
     private void runBungeeStuff() {
         if(ConfigSettings.bungeeEnabled) {
             Bukkit.getOnlinePlayers().forEach(player ->
-                            BungeeAPI.movePlayerToServer(player.getUniqueId(), ConfigSettings.backupServer));
+                    BungeeAPI.movePlayerToServer(player.getUniqueId(), ConfigSettings.backupServer));
         }
     }
 }

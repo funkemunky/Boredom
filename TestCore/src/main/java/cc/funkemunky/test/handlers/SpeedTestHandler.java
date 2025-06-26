@@ -93,7 +93,7 @@ public class SpeedTestHandler implements Listener {
                 }
             }
         } else if(event.getAction().equals(Action.PHYSICAL)
-                && event.getClickedBlock().getType() == Material.STONE_PLATE
+                && event.getClickedBlock().getType() == Material.STONE_PRESSURE_PLATE
                 && testResultsMap.containsKey(event.getPlayer().getUniqueId())) {
             TestResult result = testResultsMap.get(event.getPlayer().getUniqueId());
 
@@ -154,26 +154,26 @@ public class SpeedTestHandler implements Listener {
                         .anyMatch(b -> b.getType().equals(Material.REDSTONE_BLOCK)
                                 && BlockData.getData(b.getType())
                                 .getBox(b, ProtocolVersion.getGameVersion()).isCollided(box))) {
-                        result.endTime = System.currentTimeMillis();
+                    result.endTime = System.currentTimeMillis();
 
-                        long delta = result.endTime - result.startTime;
+                    long delta = result.endTime - result.startTime;
 
-                        double distance = result.distance;
-                        event.getPlayer().teleport(result.previousLoc);
-                        double blocksPerSecond = distance / (result.moveTime / 20.);
-                        double vanillaRatio = blocksPerSecond / setRatio;
-                        double pct = vanillaRatio * 100;
+                    double distance = result.distance;
+                    event.getPlayer().teleport(result.previousLoc);
+                    double blocksPerSecond = distance / (result.moveTime / 20.);
+                    double vanillaRatio = blocksPerSecond / setRatio;
+                    double pct = vanillaRatio * 100;
 
-                        event.getPlayer().sendMessage(Color.translate("&7Completed speed test in &f"
-                                + MathUtils.round(delta / 1000D, 1) + " seconds &7moving &f"
-                                + MathUtils.round(distance, 1) + " blocks &7&o(&f&o%v blocks per seconds&7&o)."
-                                .replace("%v", String.valueOf(MathUtils
-                                        .round(blocksPerSecond, 2)))));
-                        double pctDelta = pct - 100;
-                        event.getPlayer().sendMessage(Color.translate("&7Your speed is " + (Math.abs(pctDelta) < 0.8
-                                ? "the same as vanilla" : (pctDelta < 0 ? "slower than vanilla" : "faster than vanilla") + " &7(&f"
-                                + MathUtils.round(pctDelta, 1) + "%&7)")));
-                        testResultsMap.remove(event.getPlayer().getUniqueId());
+                    event.getPlayer().sendMessage(Color.translate("&7Completed speed test in &f"
+                            + MathUtils.round(delta / 1000D, 1) + " seconds &7moving &f"
+                            + MathUtils.round(distance, 1) + " blocks &7&o(&f&o%v blocks per seconds&7&o)."
+                            .replace("%v", String.valueOf(MathUtils
+                                    .round(blocksPerSecond, 2)))));
+                    double pctDelta = pct - 100;
+                    event.getPlayer().sendMessage(Color.translate("&7Your speed is " + (Math.abs(pctDelta) < 0.8
+                            ? "the same as vanilla" : (pctDelta < 0 ? "slower than vanilla" : "faster than vanilla") + " &7(&f"
+                            + MathUtils.round(pctDelta, 1) + "%&7)")));
+                    testResultsMap.remove(event.getPlayer().getUniqueId());
                 }
             }
         }

@@ -2,6 +2,7 @@ package cc.funkemunky.test.listeners;
 
 import cc.funkemunky.test.TestCore;
 import cc.funkemunky.test.user.User;
+import com.destroystokyo.paper.Title;
 import dev.brighten.ac.api.AnticheatAPI;
 import dev.brighten.ac.api.check.ECheck;
 import dev.brighten.ac.api.event.AnticheatEvent;
@@ -14,7 +15,6 @@ import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventPriority;
-import org.github.paperspigot.Title;
 
 import java.util.List;
 
@@ -53,7 +53,7 @@ public class CheatListeners implements AnticheatEvent {
         } else if(user.violations.get(check.getName()) < check.getVl()) {
             user.violations.put(check.getName(), check.getVl());
         }
-        
+
         return FlagResult.builder().cancelled(cancelled).build();
     }
 
