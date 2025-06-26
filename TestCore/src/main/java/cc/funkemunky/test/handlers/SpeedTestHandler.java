@@ -93,7 +93,7 @@ public class SpeedTestHandler implements Listener {
                 }
             }
         } else if(event.getAction().equals(Action.PHYSICAL)
-                && event.getClickedBlock().getType() == Material.STONE_PRESSURE_PLATE
+                && event.getClickedBlock().getType() == Material.STONE_PLATE
                 && testResultsMap.containsKey(event.getPlayer().getUniqueId())) {
             TestResult result = testResultsMap.get(event.getPlayer().getUniqueId());
 

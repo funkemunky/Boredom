@@ -47,6 +47,7 @@ public class GeneralListeners implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onEvent(BlockBreakEvent event) {
+        if(StrikePracticePlugin.INSTANCE != null && StrikePracticePlugin.notInTestMap(event.getPlayer())) return;
         if(!event.getPlayer().isOp()) {
             event.setCancelled(true);
         }
@@ -62,8 +63,7 @@ public class GeneralListeners implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST) //So anything else can modify this if necessary.
     public void onEvent(EntityDamageByEntityEvent event) {
-        if(event.getDamager() instanceof Player && event.getEntity() instanceof Player) {
-            Player attacker = (Player) event.getDamager();
+        if(event.getDamager() instanceof Player attacker && event.getEntity() instanceof Player) {
 
             if(StrikePracticePlugin.INSTANCE != null && StrikePracticePlugin.notInTestMap(attacker)) return;
 
@@ -84,8 +84,7 @@ public class GeneralListeners implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)  //So anything else can modify this if necessary.
     public void onDamage(EntityDamageEvent event) {
-        if(event.getEntity() instanceof Player) {
-            Player attacker = (Player) event.getEntity();
+        if(event.getEntity() instanceof Player attacker) {
 
             if(StrikePracticePlugin.INSTANCE != null && StrikePracticePlugin.notInTestMap(attacker)) return;
 
@@ -99,9 +98,7 @@ public class GeneralListeners implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)  //So anything else can modify this if necessary.
     public void onHunger(FoodLevelChangeEvent event) {
-        if(event.getEntity() instanceof Player) {
-            Player player = (Player) event.getEntity();
-
+        if(event.getEntity() instanceof Player player) {
             if(StrikePracticePlugin.INSTANCE != null && StrikePracticePlugin.notInTestMap(player)) return;
 
             User user = User.getUser(player.getUniqueId());
