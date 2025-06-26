@@ -7,9 +7,9 @@ import cc.funkemunky.test.utils.MinecraftTime;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Updates;
-import org.bson.Document;
+import cc.funkemunky.api.utils.com.mongodb.client.model.Filters;
+import cc.funkemunky.api.utils.com.mongodb.client.model.Updates;
+import cc.funkemunky.api.utils.org.bson.Document;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;

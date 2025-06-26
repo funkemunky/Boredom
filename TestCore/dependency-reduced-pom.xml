@@ -58,9 +58,9 @@
   </repositories>
   <dependencies>
     <dependency>
-      <groupId>org.github.lombok</groupId>
+      <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.0</version>
+      <version>1.18.24</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -94,9 +94,9 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>cc.funkemunky.plugins</groupId>
+      <groupId>cc.funkemunky.utils</groupId>
       <artifactId>Atlas</artifactId>
-      <version>1.11.6</version>
+      <version>1.12.1.1</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>

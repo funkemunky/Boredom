@@ -1,13 +1,13 @@
 package cc.funkemunky.test.db;
 
-import com.mongodb.ConnectionString;
-import com.mongodb.MongoClientSettings;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
+import cc.funkemunky.api.utils.com.mongodb.ConnectionString;
+import cc.funkemunky.api.utils.com.mongodb.MongoClientSettings;
+import cc.funkemunky.api.utils.com.mongodb.client.MongoClient;
+import cc.funkemunky.api.utils.com.mongodb.client.MongoClients;
+import cc.funkemunky.api.utils.com.mongodb.client.MongoCollection;
+import cc.funkemunky.api.utils.com.mongodb.client.MongoDatabase;
+import cc.funkemunky.api.utils.org.bson.Document;
 import lombok.Getter;
-import org.bson.Document;
 
 @Getter
 public class Mongo {
@@ -15,13 +15,13 @@ public class Mongo {
     private final MongoCollection<Document> settings;
 
     public Mongo() {
-        MongoClient client;
         ConnectionString cs = new ConnectionString(MongoConfig.mongoDBURL);
         MongoClientSettings settings = MongoClientSettings.builder().applyConnectionString(cs).build();
-        client = MongoClients.create(settings);
 
-        database = client.getDatabase("testcoreInfo");
-        
-        this.settings = database.getCollection("settings");
+        try(MongoClient client = MongoClients.create(settings)) {
+            database = client.getDatabase("testcoreInfo");
+
+            this.settings = database.getCollection("settings");
+        }
     }
 }
